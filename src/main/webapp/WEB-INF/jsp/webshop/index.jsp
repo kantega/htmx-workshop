@@ -37,6 +37,10 @@
                                     <i class="bi bi-cart-plus"></i>
                                     Add to cart
                                 </button>
+
+                                <span hx-trigger="load" hx-get="/inventory?productId=${product.id}">
+                                    <img src="/three-dots.svg" style="width: 30px" class="hx-indicator"/>
+                                </span>
                             </form>
                         </div>
                     </div>
