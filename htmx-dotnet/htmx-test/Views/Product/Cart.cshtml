@@ -1,0 +1,34 @@
+﻿@model HashSet<htmx_test.Models.Product>
+
+<div id="cart" class="cart-card scroll" hx-get="product/cart" hx-trigger="add-to-shopping-cart from:body" hx-swap="outerHTML">
+
+    <div class="d-flex justify-content-between p-4">
+        <h2>Shopping cart <i class="bi bi-cart4"></i></h2>
+        <button class="btn btn-sm" style="background-color: #EE3A64; color: white;"
+                hx-delete="product/clearcart"
+                hx-target="#cart">
+            Clear <i class="bi bi-trash"></i>
+        </button>
+    </div>
+
+    <div class="d-flex flex-column align-items-center gap-3">
+
+        @foreach (var cartProduct in Model)
+        {
+            <div id="cart-product-@cartProduct.ID" class="shopping-cart-item d-flex flex-column justify-content-between p-2">
+                <p>@cartProduct.Title</p>
+
+                <div>
+                    <p class="description">Number: @cartProduct.inCart</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn" style="background-color: #EE3A64; color: white;"
+                            hx-delete="product/remove?productID=@cartProduct.ID"
+                            hx-target="#cart-product-@cartProduct.ID">
+                        Remove item
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "htmx-test", "htmx-test\htmx-test.csproj", "{6CEDD951-710E-4852-80CA-0F108E5A940C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CEDD951-710E-4852-80CA-0F108E5A940C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CEDD951-710E-4852-80CA-0F108E5A940C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CEDD951-710E-4852-80CA-0F108E5A940C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CEDD951-710E-4852-80CA-0F108E5A940C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {520206B2-458F-4A58-AB1D-796A708E27C6}
+	EndGlobalSection
+EndGlobal

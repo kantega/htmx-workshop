@@ -1,0 +1,123 @@
+﻿@page
+
+<style>
+    .htmx-indicator {
+        opacity: 0;
+        transition: opacity 500ms ease-in;
+    }
+
+    .htmx-request .htmx-indicator {
+        opacity: 1;
+    }
+
+    #page-layout {
+        display: grid;
+        grid-template-areas: "products cart";
+        grid-column-gap: 70px;
+
+    }
+
+    h1, h2, th {
+        font-family: poppins-regular;
+        font-weight: 400;
+        color: #000000;
+    }
+
+    h1 {
+        font-family: poppins-regular;
+        font-size: 1.25rem;
+        padding-bottom: 2rem;
+    }
+
+    p, td, label, tr, button {
+        font-family: poppins-light;
+        font-weight: normal;
+        color: #191c1f;
+    }
+
+    .description {
+        font-family: poppins-light;
+        font-weight: normal;
+        color: #191c1f;
+        font-size: 0.75rem; 
+    }
+
+    .product-card {
+        width: 420px;
+        height: 160px;
+        background-color: white;
+        border-radius: 9px;
+    }
+
+    .cart-card {
+        width: 500px;
+        background-color: white;
+        border-radius: 9px;
+    }
+    .shopping-cart-item {
+        width: 400px;
+        height: 180px;
+        background-color: #F2F1F4;
+        border-radius: 5px;
+    }
+
+    .scroll {
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+</style>
+
+<div class="p-4">
+    <form action="/product/search" method="post">
+        <label for="search">Search for product</label>
+        <input id="search" type="text" class="form-control w-25" placeholder="Search" name="searchText">
+        <button class="btn btn-sm btn-primary" type="submit">Search</button>
+    </form>
+
+</div>
+<div id="page-layout" class="p-4">
+
+    @* Product list *@
+    
+
+    <div id="products">
+        @foreach (var product in ViewBag.productList)
+        {
+
+            <div class="product-card d-flex flex-column justify-content-between mb-3 p-2">
+                <div class="d-flex justify-content-between"
+                     hx-get="inventory/stock?productID=@product.ID"
+                     hx-target="#stock-@product.ID"
+                     hx-trigger="load"
+                     hx-indicator="#stock-indicator-@product.ID">
+
+                    <p>@product.Title</p>
+                    <p id="stock-@product.ID">
+                        <i id="stock-indicator-@product.ID" class="spinner-border text-primary htmx-indicator" role="status"></i>
+                    </p>
+                </div>
+                <div>
+                    <p class="description">Description</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn" style="background-color: #EE3A64; color: white;"
+                            hx-post="product/addtocart?productID=@product.ID"
+                            hx-target="#toast">
+                        Add to cart
+                        <i class="bi bi-cart-plus"></i>
+                    </button>
+
+                </div>
+            </div>
+        }
+    </div>
+
+
+    @* Shopping cart *@
+    <div id="cart" class="cart-card scroll" hx-get="product/cart" hx-trigger="add-to-shopping-cart from:body, load" hx-swap="outerHTML">
+
+    </div>
+    <div id="toast"></div>
+
+</div>

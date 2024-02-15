@@ -1,0 +1,25 @@
+﻿
+@{
+    string color;
+
+    if (Model < 10)
+    {
+        color = "red";
+    }
+    else if (Model < 20)
+    {
+        color = "orange";
+    }
+    else
+    {
+        color = "green";
+    }
+}
+
+
+<p>
+
+    @Model pcs in stock
+    <i class="bi bi-circle-fill" style="color: @color"></i>
+</p>
+

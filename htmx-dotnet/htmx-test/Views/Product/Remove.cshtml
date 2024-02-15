@@ -1,0 +1,24 @@
+﻿@model htmx_test.Models.Product
+
+
+
+@if (Model != null)
+{
+
+    <div id="cart-product-@Model.ID" class="shopping-cart-item d-flex flex-column justify-content-between p-2">
+        <p>@Model.Title</p>
+
+        <div>
+            <p class="description">Number: @Model.inCart</p>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn" style="background-color: #EE3A64; color: white;"
+                    hx-delete="product/remove?productID=@Model.ID"
+                    hx-target="#cart-product-@Model.ID">
+                        Remove item
+             </button>
+         </div>
+     </div>
+   
+}
+
