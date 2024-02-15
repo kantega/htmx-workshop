@@ -1,7 +1,9 @@
 package no.kantega.htmxdemo.web.webshop;
 
 
+import jakarta.servlet.http.HttpServletResponse;
 import no.kantega.htmxdemo.domain.Product;
+import no.kantega.htmxdemo.repositories.InventoryRepository;
 import no.kantega.htmxdemo.repositories.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class WebshopController {
 
     private final ProductRepository productRepository;
+    private final InventoryRepository inventoryRepository;
 
-    public WebshopController(ProductRepository productRepository) {
+    public WebshopController(ProductRepository productRepository, InventoryRepository inventoryRepository) {
         this.productRepository = productRepository;
+        this.inventoryRepository = inventoryRepository;
     }
 
     @ModelAttribute("cart")
@@ -31,12 +35,24 @@ public class WebshopController {
     }
 
     @PostMapping("add-to-cart")
-    public ModelAndView addToCart(@RequestParam("productId") int productId, @SessionAttribute Cart cart) {
+    public ModelAndView addToCart(@RequestParam("productId") int productId, @SessionAttribute Cart cart, HttpServletResponse response) {
         Product product = productRepository.findById(productId);
 
         cart.addProduct(product);
+        inventoryRepository.reduceStock(product, 1);
 
+        response.setHeader("HX-Trigger", "cart-updated");
         return new ModelAndView("/webshop/cart")
                 .addObject("cart", cart);
+    }
+
+    @GetMapping("shipping-info")
+    public ModelAndView getShippingInfo(@SessionAttribute Cart cart) {
+        int remaining = 1000 - cart.getTotal().intValue();
+        boolean freeShipping = remaining <= 0;
+
+        return new ModelAndView("/webshop/shipping-info")
+                .addObject("freeShipping", freeShipping)
+                .addObject("remaining", remaining);
     }
 }

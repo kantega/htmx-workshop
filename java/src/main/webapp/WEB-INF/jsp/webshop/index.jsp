@@ -5,14 +5,16 @@
 <style>
     #page-layout {
         display: grid;
-        grid-template-areas: "products cart";
+        grid-template-areas: "alert alert"
+                             "products cart";
         grid-column-gap: 20px;
+        grid-template-rows: auto 1fr;
     }
 
     .product-layout {
         display: grid;
-        grid-template-areas: "image description  stock"
-                             "image description  addtobasket";
+        grid-template-areas: "image description stock"
+                             "image description addtobasket";
         grid-template-columns: 100px 1fr auto;
         grid-template-rows: 1fr auto;
         height: 180px;
@@ -38,12 +40,21 @@
     .product-description {
         grid-area: description;
     }
+
+    #alert {
+        grid-area: alert;
+    }
 </style>
 
 <t:layout>
     <div id="page-layout">
+        <div id="alert" hx-trigger="load, cart-updated from:body" hx-get="/webshop/shipping-info" >
+        </div>
+
         <div id="products">
             <c:forEach var="product" items="${products}">
+
+
                 <div class="card mb-2">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div>
@@ -60,8 +71,10 @@
                         <div class="product-description">
                             <p>${product.description}</p>
                         </div>
-                        <div class="product-stock" hx-trigger="load" hx-get="/inventory?productId=${product.id}">
-                            <img src="/three-dots.svg" style="width: 30px" class="hx-indicator"/>
+                        <div class="product-stock">
+                            <div hx-trigger="load, stock-updated-${product.id} from:body" hx-get="/inventory?productId=${product.id}" hx-indicator="#dots-${product.id}">
+                            </div>
+                            <img src="/three-dots.svg" style="width: 30px" class="htmx-indicator" id="dots-${product.id}"/>
                         </div>
                         <div class="product-addtobasket">
                             <form>

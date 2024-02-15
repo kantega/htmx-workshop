@@ -1,5 +1,6 @@
 package no.kantega.htmxdemo.repositories;
 
+import no.kantega.htmxdemo.domain.Product;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -23,5 +24,10 @@ public class InventoryRepository {
         }
 
         return productItemsInStock.computeIfAbsent(productId, k -> (int) (Math.random() * 40));
+    }
+
+    public void reduceStock(Product product, int count) {
+        int currentStock = productItemsInStock.get(product.getId());
+        productItemsInStock.put(product.getId(), currentStock - count);
     }
 }
