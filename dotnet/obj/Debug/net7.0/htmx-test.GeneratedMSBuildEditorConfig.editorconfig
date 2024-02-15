@@ -9,53 +9,53 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = htmx_test
 build_property.RootNamespace = htmx_test
-build_property.ProjectDir = /Users/sleire/dev/booster/c#/htmx-dotnet/htmx-test/
+build_property.ProjectDir = /Users/oven/git/booster/htmx-workshop/dotnet/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/sleire/dev/booster/c#/htmx-dotnet/htmx-test
+build_property.MSBuildProjectDirectory = /Users/oven/git/booster/htmx-workshop/dotnet
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Inventory/Stock.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Inventory/Stock.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW52ZW50b3J5L1N0b2NrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Product/AddToCart.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Product/AddToCart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9BZGRUb0NhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Product/Cart.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Product/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9DYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Product/Index.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Product/Remove.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Product/Remove.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9SZW1vdmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Product/Search.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Product/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9TZWFyY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Shared/Error.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/_ViewImports.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/_ViewStart.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sleire/dev/booster/c\#/htmx-dotnet/htmx-test/Views/Shared/_Layout.cshtml]
+[/Users/oven/git/booster/htmx-workshop/dotnet/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-a6xkpzc0es

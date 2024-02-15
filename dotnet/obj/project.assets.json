@@ -337,25 +337,24 @@
     ]
   },
   "packageFolders": {
-    "/Users/sleire/.nuget/packages/": {}
+    "/Users/oven/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sleire/dev/booster/c#/htmx-dotnet/htmx-test/htmx-test.csproj",
+      "projectUniqueName": "/Users/oven/git/booster/htmx-workshop/dotnet/htmx-test.csproj",
       "projectName": "htmx-test",
-      "projectPath": "/Users/sleire/dev/booster/c#/htmx-dotnet/htmx-test/htmx-test.csproj",
-      "packagesPath": "/Users/sleire/.nuget/packages/",
-      "outputPath": "/Users/sleire/dev/booster/c#/htmx-dotnet/htmx-test/obj/",
+      "projectPath": "/Users/oven/git/booster/htmx-workshop/dotnet/htmx-test.csproj",
+      "packagesPath": "/Users/oven/.nuget/packages/",
+      "outputPath": "/Users/oven/git/booster/htmx-workshop/dotnet/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/sleire/.nuget/NuGet/NuGet.Config"
+        "/Users/oven/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/sdk/7.0.312/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -398,7 +397,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.312/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
       }
     }
   }
