@@ -12,15 +12,17 @@ public class Product {
     private String name;
     private String description;
     private BigDecimal price;
+    private String image;
 
     private List<Price> prices = new ArrayList<>();
 
     // Constructor
-    public Product(int id, String name, String description, String price) {
+    public Product(int id, String name, String description, String price, String image) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = new BigDecimal(price);
+        this.image = image;
     }
 
     public int getId() {
@@ -42,6 +44,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public BigDecimal getPrice() {

@@ -18,15 +18,15 @@ public class ProductRepository {
 
     public ProductRepository() {
         // Adding sample product data to the list
-        products.add(createProduct("Laptop", "High-performance laptop", "1000.00"));
-        products.add(createProduct("Smartphone", "Latest model smartphone", "700.00"));
-        products.add(createProduct("Headphones", "Noise-cancelling headphones", "150.00"));
-        products.add(createProduct("Smartwatch", "Fitness tracking smartwatch", "250.00"));
-        products.add(createProduct("Tablet", "Powerful and lightweight tablet", "500.00"));
+        products.add(createProduct("Laptop", "High-performance laptop", "1000.00", "placeholder.png"));
+        products.add(createProduct("Smartphone", "Latest model smartphone", "700.00", "placeholder.png"));
+        products.add(createProduct("Headphones", "Noise-cancelling headphones", "150.00", "placeholder.png"));
+        products.add(createProduct("Smartwatch", "Fitness tracking smartwatch", "250.00", "placeholder.png"));
+        products.add(createProduct("Tablet", "Powerful and lightweight tablet", "500.00", "placeholder.png"));
     }
 
-    private static Product createProduct(String name, String description, String price) {
-        Product product = new Product(nextId++, name, description, price);
+    private static Product createProduct(String name, String description, String price, String image) {
+        Product product = new Product(nextId++, name, description, price, image);
         for (int i = 1; i < 6; i++) {
             product.addPrice(new Price(LocalDate.now().minusMonths(i), new BigDecimal(price).subtract(new BigDecimal(10 * i))));
         }
