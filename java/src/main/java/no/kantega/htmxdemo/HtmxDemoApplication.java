@@ -2,10 +2,13 @@ package no.kantega.htmxdemo;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import no.kantega.htmxdemo.infrastructure.AlwaysGetMethodJstlView;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.Locale;
 
@@ -28,5 +31,14 @@ public class HtmxDemoApplication {
 			public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 			}
 		};
+	}
+
+	@Bean
+	public ViewResolver internalResourceViewResolver() {
+		InternalResourceViewResolver bean = new InternalResourceViewResolver();
+		bean.setViewClass(AlwaysGetMethodJstlView.class);
+		bean.setPrefix("/WEB-INF/jsp/");
+		bean.setSuffix(".jsp");
+		return bean;
 	}
 }
