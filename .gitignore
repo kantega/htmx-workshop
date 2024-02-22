@@ -1,2 +1,6 @@
 target
 .idea
+/dotnet/.idea/
+/dotnet/.vs/
+/dotnet/obj/
+/dotnet/bin/
