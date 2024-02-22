@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/webshop")
 @SessionAttributes("cart")
@@ -34,6 +36,19 @@ public class WebshopController {
                 .addObject("cart", cart);
     }
 
+    @GetMapping("cart")
+    public ModelAndView cart(Cart cart) {
+        return new ModelAndView("/webshop/cart")
+                .addObject("cart", cart);
+    }
+
+    @GetMapping("search")
+    public ModelAndView search(@RequestParam("q") String q) {
+        List<Product> products = productRepository.findByName(q);
+        return new ModelAndView("/webshop/products")
+                .addObject("products", products);
+    }
+
     @PostMapping("add-to-cart")
     public ModelAndView addToCart(@RequestParam("productId") int productId, @SessionAttribute Cart cart, HttpServletResponse response) {
         Product product = productRepository.findById(productId);
@@ -42,8 +57,8 @@ public class WebshopController {
         inventoryRepository.reduceStock(product, 1);
 
         response.setHeader("HX-Trigger", "cart-updated");
-        return new ModelAndView("/webshop/cart")
-                .addObject("cart", cart);
+        return new ModelAndView("/webshop/add-to-target-success")
+                .addObject("product", product);
     }
 
     @GetMapping("shipping-info")

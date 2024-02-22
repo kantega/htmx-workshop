@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ProductRepository {
@@ -39,5 +40,11 @@ public class ProductRepository {
 
     public Product findById(int id) {
         return products.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+    }
+
+    public List<Product> findByName(String name) {
+        return products.stream()
+                .filter(p -> p.getName().toLowerCase().contains(name))
+                .toList();
     }
 }

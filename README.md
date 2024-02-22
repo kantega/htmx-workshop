@@ -1,82 +1,133 @@
-# HTMX-workshop 
+# HTMX-workshop
 
 HTMX is a powerful tool for building modern web applications without JavaScript.
-In this workshop, we'll dive into the basics of HTMX and learn how to enhance your web projects with dynamic, interactive features.
+In this workshop, we'll dive into the basics of HTMX and learn how to enhance your web projects with dynamic,
+interactive features.
 
-Ready to explore the world of HTMX and revolutionize the way you build web applications? Let's dive in and discover the power of HTMX together!
+Ready to explore the world of HTMX and revolutionize the way you build web applications? Let's dive in and discover the
+power of HTMX together!
 
 ## Exercise 1 - Implementing HTMX for Dynamic "Add product to cart" Functionality
-In this exercise, you'll start with a traditional full-page-reload application where clicking the "Add" button refreshes the entire page. Your task is to enhance the user experience by implementing HTMX to make the "Add" functionality dynamic.
+
+In this exercise, you'll start with a traditional full-page-reload application where clicking the "Add" button refreshes
+the entire page. Your task is to enhance the user experience by implementing HTMX to make the "Add" functionality
+dynamic.
 
 **Objective**  
-The objective of this exercise is to replace the full-page reload behavior with an HTMX request that adds a product to the shopping cart without refreshing the entire page.
+Replace the full-page reload behavior with an HTMX request that adds a product to the shopping cart without refreshing
+the entire page.
 
-**Instructions**  
-Understanding the Code: Familiarize yourself with the existing HTML. Take note of how the "Add" button triggers a full-page reload when clicked.
-Integrate HTMX: Integrate HTMX into the project by including the necessary hx-attributes in your HTML file.
+**Instructions**
+Using the `hx-post` attribute, make the "Add to cart" form post to `/webshop/add-to-cart`. At present, this endpoint
+returns the entire page, but we want to change this so that only the form is updated. Change the endpoint so it returns
+a fragment of HTML containing only the form, plus the text "Added to cart". Use `hx-swap` to replace the entire form
+with the html returned by the endpoint. The default behavior for `hx-target` is to swap out the element that made the
+request, so that should suit us fine.
 
-Implement HTMX Request: Modify the "Add" button to send a hx-post request to the server when clicked. This request should add the selected product to the shopping cart on the server side. You can send the request to the endpoint: ```"/cart/add/product/{id}"```
+**Test that it works**
+When you click the "Add to cart" button, you should see the text "Added to cart". However, the shopping cart in the
+top right corner is not updated yet.
 
-Update UI Dynamically: Once the product has been successfully added to the cart on the server, swap out the "Add" button with the response received from the server.
+**Resources**
 
-Useful resource: **https://htmx.org/attributes/hx-swap/**
+- https://htmx.org/docs
+- https://htmx.org/attributes/hx-swap
+- https://htmx.org/attributes/hx-target
 
-As you might have noticed, the shopping cart doesn´t update without a full page reload. Proceed to exercise 2 to fix this. 
+As you might have noticed, the shopping cart doesn't update without a manual full page reload. Proceed to exercise 2 to
+fix this.
 
 ## Exercise 2 - Updating Shopping Cart state with hx-trigger
 
-In this exercise, you'll build upon the previous exercise by enhancing the shopping cart's functionality using HTMX events.
-You'll implement an HTMX event listener in the shopping cart component to update its state when a product is added to the cart.s
-Additionally, you'll define a custom event in the server response header to trigger the HTMX event on the client side.
+We want the shopping cart in the top right corner to update automatically when we add new items to the cart.
+This can be achieved by making it listen for an event that we trigger when the item is added. We can send the event
+as an HTTP Header from the server in the response from the `/webshop/add-to-cart` endpoint.
 
 **Objective**  
-The objective of this exercise is to leverage HTMX events to dynamically update the shopping cart's state.
-By the end of this exercise, you'll have a more responsive and synchronized shopping cart that reflects changes made on the server side in real-time.
+Update the shopping cart in the top right corner when the user clicks the "Add to cart" button, without doing a full
+page reload.
 
 **Instructions**  
-Define Custom Event: Modify the server response to include a custom event in the response header when a product is successfully added to the cart. This custom event should be unique and descriptive, such as "add-to-shopping-cart".  
+Define Custom Event: Modify the server response to include a custom event in the response header when a product is
+successfully added to the cart. This custom event should be unique and descriptive, such as "cart-updated".
 
-**You can add the following line to the ```/cart/add/product/{id}``` endpoint:**
+**You can add the following line to the ```/webshop/add-to-cart``` endpoint:**
 
-Spring MVC:```response.setHeader("HX-Trigger", "add-to-shopping-cart");```  
-.NET: ```Response.Headers.Add("HX-trigger", "add-to-shopping-cart");```
+Spring MVC:```response.setHeader("HX-Trigger", "cart-updated");```  
+.NET: ```Response.Headers.Add("HX-trigger", "cart-updated");```
 
+Implement HTMX Event Listener: In the shopping cart component, add an HTMX event listener to listen for the custom event
+defined in the server response header, so that it fetches the updated shopping cart from `/webshop/cart`.
 
-Implement HTMX Event Listener: In the shopping cart component, add an HTMX event listener to listen for the custom event defined in the server response header.
-When triggered, the shopping cart should fetch the updated shopping cart-state accordingly without refreshing the entire page.
+**Resources**
 
+- https://htmx.org/attributes/hx-trigger/#triggering-via-the-hx-trigger-header
+- https://htmx.org/headers/hx-trigger
 
-Useful resource: **https://htmx.org/attributes/hx-trigger/#triggering-via-the-hx-trigger-header**   
+## Exercise 3 - Free shipping banner message
 
-## Exercise 3 - Fetching product stock status with HTMX on "load" Event Trigger and hx-indicator
-In this exercise, you'll enhance the user experience by implementing a stock status retrieval mechanism using HTMX triggered on the "load" event. By utilizing HTMX to fetch stock status data upon page load, users will receive immediate feedback on product availability without manual interaction.
+The webshop offers free shipping to customers shopping for more than 1000 kr. We want to add a banner to the top of
+the page informing users how much more they have to spend to get free shipping.
+
+**Objective**
+
+Add a banner on the top of the page, and update it using `hx-trigger` when the page loads, and when items are added
+to the shopping cart.
+
+**Instructions**
+
+Add a `<div>` to the top of the page. There is an endpoint called `/webshop/shipping-info` that will return the banner
+text. Use `hx-trigger` in combination with `hx-get` to fetch the contents. You can listen to several events
+using a comma separated list of event names.
+
+**Resources**
+
+- https://htmx.org/docs/#special-events
+- https://htmx.org/attributes/hx-trigger
+
+## Exercise 5 - Implementing active search with HTMX
+
+To make it easier for users to find products, we need a search box. We want the results to show up as the user types,
+after a small delay to save bandwidth.
+
+**Objective**
+
+Create a search box that filters products as the user types
+
+**Instructions**
+
+Add a search box to the top of the page. There is a commented out html fragment in the `index` page you can use. Use
+`hx-get` to fetch search results from the endpoint called `/webshop/search`. Listen for events `keyup`, `search` 
+and `changed`, and experiment with an appropriate `delay` to avoid searching after every keystroke. 
+
+**Resources**
+
+- https://htmx.org/examples/active-search
+
+## Exercise 4 - Fetching product stock status with HTMX on "load" Event Trigger and hx-indicator
+
+In this exercise, you'll enhance the user experience by implementing a stock status retrieval mechanism using HTMX
+triggered on the "load" event. By utilizing HTMX to fetch stock status data upon page load, users will receive immediate
+feedback on product availability without manual interaction.
 
 **Objective**  
-The objective of this exercise is to leverage HTMX to retrieve and display product stock status upon page load. By the end of this exercise, users will have access to real-time stock information without waiting for manual queries.
+The objective of this exercise is to leverage HTMX to retrieve and display product stock status upon page load. By the
+end of this exercise, users will have access to real-time stock information without waiting for manual queries.
 
 Useful resource: **https://htmx.org/attributes/hx-indicator/**
 
 ## Exercise 4 - Implementing product deletion and clear shopping-cart with hx-delete
 
-In this exercise, you'll further enhance the shopping cart functionality by allowing users to delete individual products from the cart and emptying the entire cart using HTMX hx-delete requests. This will provide users with more control over their shopping experience without the need for page refreshes.
+In this exercise, you'll further enhance the shopping cart functionality by allowing users to delete individual products
+from the cart and emptying the entire cart using HTMX hx-delete requests. This will provide users with more control over
+their shopping experience without the need for page refreshes.
 
 **Objective**  
-The objective of this exercise is to implement product deletion and cart emptying functionalities using hx-delete requests. By the end of this exercise, users will be able to remove specific products from their cart or clear the entire cart with ease.
+The objective of this exercise is to implement product deletion and cart emptying functionalities using hx-delete
+requests. By the end of this exercise, users will be able to remove specific products from their cart or clear the
+entire cart with ease.
 
 **Bonus:** If you want, you can add css-transitions to make a element fade out when deleting.
 Useful resource:   
 **https://htmx.org/attributes/hx-delete/**  
 **https://htmx.org/examples/animations/#fade-out-on-swap**
-
-
-
-## Exercise 5 - Implementing active search with HTMX
-
-In this exercise, you'll introduce active search functionality to your web application using HTMX. Active search allows users to receive real-time search results as they type, providing a more dynamic and responsive search experience without the need for manual submission.
-
-**Objective**
-
-The objective of this exercise is to implement active search functionality using HTMX, enabling users to receive instant search results as they type in the search input field. By the end of this exercise, users will enjoy a smoother and more interactive search experience.
-
-Useful resource:   
-**https://htmx.org/examples/active-search/**
