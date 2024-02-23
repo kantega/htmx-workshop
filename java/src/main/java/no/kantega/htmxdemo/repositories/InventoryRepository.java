@@ -30,4 +30,9 @@ public class InventoryRepository {
         int currentStock = productItemsInStock.get(product.getId());
         productItemsInStock.put(product.getId(), currentStock - count);
     }
+
+    public void increaseStock(Product product, int count) {
+        int currentStock = productItemsInStock.get(product.getId());
+        productItemsInStock.put(product.getId(), currentStock + count);
+    }
 }

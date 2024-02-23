@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -56,9 +57,31 @@ public class WebshopController {
         cart.addProduct(product);
         inventoryRepository.reduceStock(product, 1);
 
-        response.setHeader("HX-Trigger", "cart-updated");
+        response.setHeader("HX-Trigger", "cart-updated, stock-updated-" + productId);
         return new ModelAndView("/webshop/add-to-target-success")
                 .addObject("product", product);
+    }
+
+    @PostMapping("remove-from-cart")
+    public void removeFromCart(@RequestParam("productId") int productId, @SessionAttribute Cart cart, HttpServletResponse response) {
+        Product product = productRepository.findById(productId);
+
+        cart.removeProduct(product);
+        inventoryRepository.increaseStock(product, 1);
+
+        response.setHeader("HX-Trigger", "cart-updated, stock-updated-" + productId);
+    }
+
+    @DeleteMapping("cart")
+    public void emptyCart(Cart cart, HttpServletResponse response) {
+        List<String> events = new ArrayList<>();
+        for (Cart.CartItem item : cart.getItems()) {
+            inventoryRepository.increaseStock(item.getProduct(), item.getQuantity());
+            events.add("stock-updated-" + item.getProduct().getId());
+        }
+        cart.clear();
+        events.add("cart-updated");
+        response.setHeader("HX-Trigger", String.join(", ", events));
     }
 
     @GetMapping("shipping-info")

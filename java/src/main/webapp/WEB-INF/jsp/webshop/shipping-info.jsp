@@ -10,7 +10,7 @@
     </c:when>
     <c:otherwise>
         <div class="alert alert-danger">
-            Shop for ${remaining} more to get free shipping on this order
+                Shop for ${remaining} more to get free shipping on this order
         </div>
     </c:otherwise>
 </c:choose>

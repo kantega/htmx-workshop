@@ -8,11 +8,25 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Cart {
-    private List<CartItem> items = new ArrayList<>();
+    private final List<CartItem> items = new ArrayList<>();
 
     public void addProduct(Product product) {
         CartItem item = getOrAddItem(product);
         item.quantity += 1;
+    }
+
+    public void deleteProduct(Product product) {
+        items.removeIf(item -> item.product.getId() == product.getId());
+    }
+
+    public void removeProduct(Product product) {
+        CartItem item = getOrAddItem(product);
+        item.quantity -= 1;
+        if (item.quantity < 1) deleteProduct(product);
+    }
+
+    public void clear() {
+        items.clear();
     }
 
     public CartItem getOrAddItem(Product product) {

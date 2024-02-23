@@ -7,7 +7,7 @@ interactive features.
 Ready to explore the world of HTMX and revolutionize the way you build web applications? Let's dive in and discover the
 power of HTMX together!
 
-## Exercise 1 - Implementing HTMX for Dynamic "Add product to cart" Functionality
+## Exercise 1 - Dynamic "Add to cart"
 
 In this exercise, you'll start with a traditional full-page-reload application where clicking the "Add" button refreshes
 the entire page. Your task is to enhance the user experience by implementing HTMX to make the "Add" functionality
@@ -85,7 +85,7 @@ using a comma separated list of event names.
 - https://htmx.org/docs/#special-events
 - https://htmx.org/attributes/hx-trigger
 
-## Exercise 5 - Implementing active search with HTMX
+## Exercise 4 - Active search
 
 To make it easier for users to find products, we need a search box. We want the results to show up as the user types,
 after a small delay to save bandwidth.
@@ -97,35 +97,50 @@ Create a search box that filters products as the user types
 **Instructions**
 
 Add a search box to the top of the page. There is a commented out html fragment in the `index` page you can use. Use
-`hx-get` to fetch search results from the endpoint called `/webshop/search`. Listen for events `keyup`, `search` 
-and `changed`, and experiment with an appropriate `delay` to avoid searching after every keystroke. 
+`hx-get` to fetch search results from the endpoint called `/webshop/search`. Listen for events `keyup`, `search`
+and `changed`, and experiment with an appropriate `delay` to avoid searching after every keystroke.
 
 **Resources**
 
 - https://htmx.org/examples/active-search
 
-## Exercise 4 - Fetching product stock status with HTMX on "load" Event Trigger and hx-indicator
+## Exercise 5 - Fetching product stock status with HTMX on "load" Event Trigger and hx-indicator
 
-In this exercise, you'll enhance the user experience by implementing a stock status retrieval mechanism using HTMX
-triggered on the "load" event. By utilizing HTMX to fetch stock status data upon page load, users will receive immediate
-feedback on product availability without manual interaction.
+Some services are a bit slow. In this webshop, figuring out how many items are in stock (the inventory) takes about a
+second or two, and we don't want users to have to wait for this before the page loads. The solution is to lazy load
+the inventory using a trigger when the page loads.
+
+**Objective**
+
+Display product inventory on page load. Use a loading indicator as a placeholder while the inventory loads. As a bonus,
+update the inventory when a user puts an item in the basket.
+
+**Instructions**
+
+Add a `<div>` tag to the `products` page, and use `hx-trigger` to fetch the inventory from the endpoint
+`/inventory?productId=<id>`. Add the `/three-dots.svg` image to use as a loading indicator. Read about the required
+css classes and the `hx-indicator` attribute to connect it to the item being loaded.
+
+To update the inventory information when a user adds a product to the shopping cart, you could send an event as an
+HTTP Header as a response to `/webshop/add-to-cart`. You could for instance name the event
+`stock-updated-<product id>`, to be able to differentiate between products. When sending the `HX-Trigger` HTTP Header,
+you can add several events by separating them with a comma. Alternatively, use the json syntax for events to send 
+events with data. Note that this requires the use of javascript to read the data.
+
+**Resources**
+
+- https://htmx.org/attributes/hx-indicator/
+- https://htmx.org/headers/hx-trigger/
+
+## Exercise 6 - Delete from cart
+
+We don't have any way to remove items from the shopping cart. Let's fix that. 
 
 **Objective**  
-The objective of this exercise is to leverage HTMX to retrieve and display product stock status upon page load. By the
-end of this exercise, users will have access to real-time stock information without waiting for manual queries.
+Add functionality to remove one item from the cart, and to clear the cart.
 
-Useful resource: **https://htmx.org/attributes/hx-indicator/**
+**Instructions** 
 
-## Exercise 4 - Implementing product deletion and clear shopping-cart with hx-delete
-
-In this exercise, you'll further enhance the shopping cart functionality by allowing users to delete individual products
-from the cart and emptying the entire cart using HTMX hx-delete requests. This will provide users with more control over
-their shopping experience without the need for page refreshes.
-
-**Objective**  
-The objective of this exercise is to implement product deletion and cart emptying functionalities using hx-delete
-requests. By the end of this exercise, users will be able to remove specific products from their cart or clear the
-entire cart with ease.
 
 **Bonus:** If you want, you can add css-transitions to make a element fade out when deleting.
 Useful resource:   
