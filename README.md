@@ -14,10 +14,12 @@ the entire page. Your task is to enhance the user experience by implementing HTM
 dynamic.
 
 **Objective**  
+
 Replace the full-page reload behavior with an HTMX request that adds a product to the shopping cart without refreshing
 the entire page.
 
 **Instructions**
+
 Using the `hx-post` attribute, make the "Add to cart" form post to `/webshop/add-to-cart`. At present, this endpoint
 returns the entire page, but we want to change this so that only the form is updated. Change the endpoint so it returns
 a fragment of HTML containing only the form, plus the text "Added to cart". Use `hx-swap` to replace the entire form
@@ -25,6 +27,7 @@ with the html returned by the endpoint. The default behavior for `hx-target` is 
 request, so that should suit us fine.
 
 **Test that it works**
+
 When you click the "Add to cart" button, you should see the text "Added to cart". However, the shopping cart in the
 top right corner is not updated yet.
 
@@ -44,10 +47,12 @@ This can be achieved by making it listen for an event that we trigger when the i
 as an HTTP Header from the server in the response from the `/webshop/add-to-cart` endpoint.
 
 **Objective**  
+
 Update the shopping cart in the top right corner when the user clicks the "Add to cart" button, without doing a full
 page reload.
 
 **Instructions**  
+
 Define Custom Event: Modify the server response to include a custom event in the response header when a product is
 successfully added to the cart. This custom event should be unique and descriptive, such as "cart-updated".
 
@@ -137,6 +142,7 @@ events with data. Note that this requires the use of javascript to read the data
 We don't have any way to remove items from the shopping cart. Let's fix that. 
 
 **Objective**  
+
 Add functionality to remove one item from the cart, and to clear the cart.
 
 **Instructions** 
