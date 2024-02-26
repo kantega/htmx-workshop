@@ -57,7 +57,7 @@ namespace htmx_test.Controllers
             Response.Headers.Add("HX-trigger", "cart-updated, stock-updated-" + productId);
             ViewBag.product = product;
 
-            return PartialView("/Views/Webshop/AddToCart.cshtml");
+            return PartialView("/Views/Webshop/add-to-cart-success.cshtml");
          
         }
 
@@ -77,7 +77,7 @@ namespace htmx_test.Controllers
 
         [HttpDelete]
         [Route("webshop/cart")]
-        public void ClearCart()
+        public void EmptyCart()
         {
             List<string> events = new List<string>();
             var cart = _productRepository.GetAllProductsInCart();

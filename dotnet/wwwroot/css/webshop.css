@@ -13,17 +13,6 @@
     src: url("/fonts/Poppins-Medium.ttf");
 }
 
-/* HTMX indicator css */
-
-.htmx-indicator {
-    opacity: 0;
-    transition: opacity 500ms ease-in;
-}
-
-.htmx-request .htmx-indicator {
-    opacity: 1;
-}
-
 /* Custom CSS - page layout */
 
 #page-layout {
@@ -130,3 +119,10 @@ p, td, label, tr, button {
 .product-description {
     grid-area: description;
 }
+
+  .alert-height {
+        margin-bottom: 1px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0px 15px;
+    }

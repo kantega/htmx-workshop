@@ -13,8 +13,8 @@ namespace htmx_test.Repositories
             _cart = new Cart();
             _products = new List<Product>
                 {
-                    new Product { ID = 1, Name = "Sunglasses", Description = "Fooo", Price = 10.99m },
-                    new Product { ID = 2, Name = "Table tennis - table", Description = "Fooo",Price = 499.99m },
+                    new Product { ID = 1, Name = "Fig plant", Description = "Want to grow some figs? Hell yeah!", Price = 299.99m, Image = "pictures/fig-plant.jpg"},
+                    new Product { ID = 2, Name = "Cactus", Description = "Be aware of the spikes!",Price = 349.00m, Image = "pictures/cactus.webp" },
                     new Product { ID = 3, Name = "Nintendo Switch", Description = "Fooo",Price = 349.99m },
                     new Product { ID = 4, Name = "Pencil", Description = "Fooo", Price = 4.59m },
                     new Product { ID = 5, Name = "Soap", Description = "Fooo", Price = 1.99m },
