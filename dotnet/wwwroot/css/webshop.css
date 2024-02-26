@@ -1,0 +1,132 @@
+﻿@font-face {
+    font-family: poppins-light;
+    src: url("/fonts/Poppins-Light.ttf");
+}
+
+@font-face {
+    font-family: poppins-regular;
+    src: url("/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: poppins-medium;
+    src: url("/fonts/Poppins-Medium.ttf");
+}
+
+/* HTMX indicator css */
+
+.htmx-indicator {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
+
+.htmx-request .htmx-indicator {
+    opacity: 1;
+}
+
+/* Custom CSS - page layout */
+
+#page-layout {
+    display: grid;
+    grid-template-areas: "alert alert"
+        "search search"
+        "products cart";
+    grid-column-gap: 20px;
+    grid-template-rows: auto auto 1fr;
+}
+
+h1, h2, th {
+    font-family: poppins-regular;
+    font-weight: 400;
+    color: #000000;
+}
+
+h1 {
+    font-family: poppins-regular;
+    font-size: 1.25rem;
+    padding-bottom: 2rem;
+}
+
+p, td, label, tr, button {
+    font-family: poppins-light;
+    font-weight: normal;
+    color: #191c1f;
+}
+
+.description {
+    font-family: poppins-light;
+    font-weight: normal;
+    color: #191c1f;
+    font-size: 0.75rem;
+}
+
+.product-card {
+    width: 420px;
+    height: 160px;
+    background-color: white;
+    border-radius: 9px;
+}
+
+.cart-card {
+    width: 500px;
+    background-color: white;
+    border-radius: 9px;
+}
+
+.shopping-cart-item {
+    width: 400px;
+    height: 180px;
+    background-color: #F2F1F4;
+    border-radius: 5px;
+}
+
+.scroll {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+#search {
+    grid-area: search;
+}
+
+#alert {
+    grid-area: alert;
+}
+
+#products {
+    grid-area: products;
+}
+
+#cart {
+    grid-area: cart;
+}
+
+.product-layout {
+    display: grid;
+    grid-template-areas: "image description stock"
+        "image description addtobasket";
+    grid-template-columns: 100px 1fr auto;
+    grid-template-rows: 1fr auto;
+    height: 180px;
+}
+
+.product-addtobasket {
+    grid-area: addtobasket;
+}
+
+.product-image {
+    grid-area: image;
+    width: 90px;
+}
+
+    .product-image img {
+        width: 100%;
+    }
+
+.product-stock {
+    grid-area: stock;
+}
+
+.product-description {
+    grid-area: description;
+}

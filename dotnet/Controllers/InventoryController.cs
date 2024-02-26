@@ -14,15 +14,10 @@ namespace htmx_test.Controllers
             _inventoryRepository = inventoryRepository; 
         }
 
-
-        public async Task<ActionResult> Stock(int productID)
+        [Route("/inventory")]
+        public IActionResult Stock(int productID)
         {
-            var stock = _inventoryRepository.FindProductStockById(productID);
-
-            Random rand = new Random();
-            int randomNumber = rand.Next(500, 6000);
-
-            await Task.Delay(randomNumber);
+            var stock = _inventoryRepository.GetItemsInStock(productID);
 
             return PartialView(stock);
         }

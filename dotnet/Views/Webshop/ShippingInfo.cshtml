@@ -1,0 +1,16 @@
+﻿
+
+@if (ViewBag.FreeShipping)
+{
+    <div class="alert alert-success">
+        You get free shipping on this order!
+    </div>
+}
+else
+{
+
+    <div class="alert alert-danger">
+        Shop for @ViewBag.Remaining  more to get free shipping on this order
+    </div>
+
+}

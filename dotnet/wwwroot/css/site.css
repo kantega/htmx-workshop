@@ -21,17 +21,3 @@ body {
   margin-bottom: 60px;
 }
 
-@font-face {
-    font-family: poppins-light;
-    src: url("/fonts/Poppins-Light.ttf");
-}
-
-@font-face {
-    font-family: poppins-regular;
-    src: url("/fonts/Poppins-Regular.ttf");
-}
-
-@font-face {
-    font-family: poppins-medium;
-    src: url("/fonts/Poppins-Medium.ttf");
-}
