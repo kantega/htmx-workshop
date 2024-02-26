@@ -4,37 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%--@elvariable id="products" type="java.util.List<no.kantega.htmxdemo.domain.Product>"--%>
-<style>
-    .product-layout {
-        display: grid;
-        grid-template-areas: "image description stock"
-                             "image description addtobasket";
-        grid-template-columns: 100px 1fr auto;
-        grid-template-rows: 1fr auto;
-        height: 180px;
-    }
-
-    .product-addtobasket {
-        grid-area: addtobasket;
-    }
-
-    .product-image {
-        grid-area: image;
-        width: 90px;
-    }
-
-    .product-image img {
-        width: 100%;
-    }
-
-    .product-stock {
-        grid-area: stock;
-    }
-
-    .product-description {
-        grid-area: description;
-    }
-</style>
 
 <div>
     <c:if test="${empty products}">

@@ -4,34 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<style>
-    #page-layout {
-        display: grid;
-        grid-template-areas: "alert alert"
-                             "search search"
-                             "products cart";
-        grid-column-gap: 20px;
-        grid-template-rows: auto auto 1fr;
-    }
-
-
-
-    #search {
-        grid-area: search;
-    }
-
-    #alert {
-        grid-area: alert;
-    }
-
-    #products {
-        grid-area: products;
-    }
-
-    #cart {
-        grid-area: cart;
-    }
-</style>
 
 <t:layout>
     <div id="page-layout">
