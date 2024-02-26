@@ -24,7 +24,7 @@
     grid-template-rows: auto auto 1fr;
 }
 
-h1, h2, th {
+h1, h2, h3, th {
     font-family: poppins-regular;
     font-weight: 400;
     color: #000000;
@@ -53,7 +53,7 @@ p, td, label, tr, button {
     width: 420px;
     height: 160px;
     background-color: white;
-    border-radius: 9px;
+    border-radius: 12px;
 }
 
 .cart-card {

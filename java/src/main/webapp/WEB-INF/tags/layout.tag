@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-gradient bg-primary mb-4">
+<nav class="navbar navbar-expand-md navbar-dark bg-gradient mb-4" style="background-color: #1d002f;">
     <div class="container-fluid">
         <a class="navbar-brand" href="">
             <img src="/logo.svg" style="width: 150px">

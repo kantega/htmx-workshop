@@ -39,7 +39,7 @@
     grid-area: cart;
 }
 
-h1, h2, th {
+h1, h2, h3, th {
     font-family: poppins-regular;
     font-weight: 400;
     color: #000000;
