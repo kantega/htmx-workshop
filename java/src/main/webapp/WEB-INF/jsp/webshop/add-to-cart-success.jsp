@@ -6,10 +6,10 @@
 >
     <input type="hidden" name="productId" value="${product.id}">
 
-    <button class="btn btn-primary mt-4">
+    <div class="alert alert-success alert-height mb-2">Added to cart!</div>
+    <button class="btn btn-primary">
         <i class="bi bi-cart-plus"></i>
         Add to cart
     </button>
 
-    <div class="alert alert-info">Added to cart!</div>
 </form>

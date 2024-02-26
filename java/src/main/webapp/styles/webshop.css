@@ -1,3 +1,19 @@
+@font-face {
+    font-family: poppins-light;
+    src: url("/fonts/Poppins-Light.ttf");
+}
+
+@font-face {
+    font-family: poppins-regular;
+    src: url("/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: poppins-medium;
+    src: url("/fonts/Poppins-Medium.ttf");
+}
+
+
 #page-layout {
     display: grid;
     grid-template-areas: "alert alert"
@@ -22,6 +38,32 @@
 #cart {
     grid-area: cart;
 }
+
+h1, h2, th {
+    font-family: poppins-regular;
+    font-weight: 400;
+    color: #000000;
+}
+
+h1 {
+    font-family: poppins-regular;
+    font-size: 1.25rem;
+    padding-bottom: 2rem;
+}
+
+p, td, label, tr, button {
+    font-family: poppins-light;
+    font-weight: normal;
+    color: #191c1f;
+}
+
+.description {
+    font-family: poppins-light;
+    font-weight: normal;
+    color: #191c1f;
+    font-size: 0.75rem;
+}
+
 
 .product-layout {
     display: grid;
@@ -51,4 +93,11 @@
 
 .product-description {
     grid-area: description;
+}
+
+.alert-height {
+    margin-bottom: 1px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0px 15px;
 }

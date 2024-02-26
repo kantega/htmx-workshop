@@ -58,7 +58,7 @@ public class WebshopController {
         inventoryRepository.reduceStock(product, 1);
 
         response.setHeader("HX-Trigger", "cart-updated, stock-updated-" + productId);
-        return new ModelAndView("/webshop/add-to-target-success")
+        return new ModelAndView("/webshop/add-to-cart-success")
                 .addObject("product", product);
     }
 

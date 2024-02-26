@@ -5,12 +5,12 @@
 <c:choose>
     <c:when test="${freeShipping}">
         <div class="alert alert-success">
-        You get free shipping on this order!
+            You get free shipping on this order!
         </div>
     </c:when>
     <c:otherwise>
         <div class="alert alert-danger">
-                Shop for ${remaining} more to get free shipping on this order
+            Shop for <fmt:formatNumber value="${remaining}" type="currency"/> more to get free shipping on this order
         </div>
     </c:otherwise>
 </c:choose>
