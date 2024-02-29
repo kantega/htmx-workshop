@@ -1,4 +1,5 @@
-﻿using htmx_test.Repositories;
+﻿using htmx_test.Controllers;
+using htmx_test.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ProductRepository>();
 builder.Services.AddSingleton<InventoryRepository>();
+builder.Services.AddSingleton<SessionManager>();
+
+builder.Services.AddSession(options =>
+{
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -21,6 +28,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using htmx_test.Controllers;
 using htmx_test.Models;
 
 namespace htmx_test.Repositories
@@ -6,11 +7,9 @@ namespace htmx_test.Repositories
 	public class ProductRepository
 	{
 		private List<Product> _products;
-        private Cart _cart;
 
         public ProductRepository()
 		{
-            _cart = new Cart();
             _products = new List<Product>
                 {
                     new Product { ID = 1, Name = "Fig plant", Description = "Want to grow some figs? Hell yeah!", Price = 299.99m, Image = "pictures/fig-plant.jpg"},
@@ -32,43 +31,10 @@ namespace htmx_test.Repositories
             return _products.FirstOrDefault(p => p.ID == productID);
         }
 
-        public IEnumerable<Cart.CartItem> GetAllProductsInCart()
-        {
-            return _cart.GetItems();
-        }
-
-        public Cart.CartItem FindProductInCartById(int productID)
-        {
-            return _cart.GetItems().FirstOrDefault(p => p.Product.ID == productID);
-        }
-
-        public void AddProductToCart(Product product)
-        {
-            var item = _cart.GetOrAddItem(product);
-            item.Quantity++; 
-        }
-
-        public void RemoveProductFromCart(Product product)
-        {
-            _cart.RemoveProduct(product); 
-          
-        }
-
-        public void ClearCart()
-        {
-            _cart.Clear(); 
-        }
-
-        public decimal getCartTotal()
-        {
-            return _cart.GetTotal(); 
-        }
-
         public IEnumerable<Product> findByName(String q)
         {
            return _products.Where(p => p.Name.Contains(q)).ToList();
         }
-
     }
 }
 

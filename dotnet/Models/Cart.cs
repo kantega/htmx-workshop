@@ -22,6 +22,11 @@ namespace htmx_test.Models
             return item;
         }
 
+        public CartItem? GetItemByProductId(int productID) {
+            return items.FirstOrDefault(p => p.Product.ID == productID);
+        }
+
+
         public List<CartItem> GetItems()
         {
             return items.OrderBy(i => i.Product.ID).ToList();
