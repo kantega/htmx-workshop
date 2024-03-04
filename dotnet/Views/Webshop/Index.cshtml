@@ -3,16 +3,13 @@
 
 <div id="page-layout" class="p-4">
 
-    <div id="alert" hx-trigger="load, cart-updated from:body" hx-get="webshop/shipping-info">
+    <div id="alert">
     </div>
 
     <div id="search" class="mb-2">
         <label>
             Search:
             <input type="search" class="form-control form-control-sm"
-                   hx-trigger="keyup delay:250ms, search, changed delay:500ms"
-                   hx-get="/webshop/search"
-                   hx-target="#products"
                    name="q">
         </label>
     </div>
@@ -24,7 +21,7 @@
 
 
     @* Shopping cart *@
-    <div id="cart" class="cart-card scroll" hx-trigger="cart-updated from:body" hx-get="webshop/cart">
+    <div id="cart" class="cart-card scroll">
         @await Html.PartialAsync("Cart")
     </div>
 

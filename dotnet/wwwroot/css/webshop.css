@@ -105,7 +105,7 @@ p, td, label, tr, button {
 
 .product-image {
     grid-area: image;
-    width: 120px;
+    width: 110px;
 }
 
     .product-image img {

@@ -7,6 +7,11 @@ interactive features.
 Ready to explore the world of HTMX and revolutionize the way you build web applications? Let's dive in and discover the
 power of HTMX together!
 
+## Run the application
+Spring MVC: go to the folder `java` and run `mvn spring-boot:run` or use the run-button in your editor. Then open a browser and go to http://localhost:8080
+
+ASP.NET: go to the folder `dotnet` and run `dotnet watch` to get hot-reload on changes made to Razor files. A browser should open automatically when the application is finished building.
+
 ## Exercise 1 - Dynamic "Add to cart"
 
 In this exercise, you'll start with a traditional full-page-reload application where clicking the "Add" button refreshes
@@ -21,7 +26,7 @@ the entire page.
 **Instructions**
 
 Using the `hx-post` attribute, make the "Add to cart" form post to `/webshop/add-to-cart`. At present, this endpoint
-returns the entire page, but we want to change this so that only the form is updated. Change the endpoint so it returns
+returns the entire page, but we want to change this so that only the form is updated. Change the endpoint, so it returns
 a fragment of HTML containing only the form, plus the text "Added to cart". Use `hx-swap` to replace the entire form
 with the html returned by the endpoint. The default behavior for `hx-target` is to swap out the element that made the
 request, so that should suit us fine.
@@ -29,16 +34,13 @@ request, so that should suit us fine.
 **Test that it works**
 
 When you click the "Add to cart" button, you should see the text "Added to cart". However, the shopping cart in the
-top right corner is not updated yet.
+top right corner is not updated yet. Proceed to exercise 2 to fix this.
 
 **Resources**
 
 - https://htmx.org/docs
 - https://htmx.org/attributes/hx-swap
 - https://htmx.org/attributes/hx-target
-
-As you might have noticed, the shopping cart doesn't update without a manual full page reload. Proceed to exercise 2 to
-fix this.
 
 ## Exercise 2 - Updating Shopping Cart state with hx-trigger
 
@@ -56,7 +58,7 @@ page reload.
 Define Custom Event: Modify the server response to include a custom event in the response header when a product is
 successfully added to the cart. This custom event should be unique and descriptive, such as "cart-updated".
 
-**You can add the following line to the ```/webshop/add-to-cart``` endpoint:**
+**You can add the following line to the ```/webshop/add-to-cart``` endpoint, before the return statement:**
 
 Spring MVC:```response.setHeader("HX-Trigger", "cart-updated");```  
 .NET: ```Response.Headers.Add("HX-trigger", "cart-updated");```
@@ -71,7 +73,7 @@ defined in the server response header, so that it fetches the updated shopping c
 
 ## Exercise 3 - Free shipping banner message
 
-The webshop offers free shipping to customers shopping for more than 1000 kr. We want to add a banner to the top of
+The web shop offers free shipping to customers shopping for more than 1000 kr. We want to add a banner to the top of
 the page informing users how much more they have to spend to get free shipping.
 
 **Objective**
@@ -101,7 +103,7 @@ Create a search box that filters products as the user types
 
 **Instructions**
 
-Add a search box to the top of the page. There is a commented out html fragment in the `index` page you can use. Use
+Use the search box at the top of the page. There is a non-working html fragment in the `index` page you can use. Use
 `hx-get` to fetch search results from the endpoint called `/webshop/search`. Listen for events `keyup`, `search`
 and `changed`, and experiment with an appropriate `delay` to avoid searching after every keystroke.
 
@@ -111,7 +113,7 @@ and `changed`, and experiment with an appropriate `delay` to avoid searching aft
 
 ## Exercise 5 - Fetching product stock status with HTMX on "load" Event Trigger and hx-indicator
 
-Some services are a bit slow. In this webshop, figuring out how many items are in stock (the inventory) takes about a
+Some services are a bit slow. In this web shop, figuring out how many items are in stock (the inventory) takes about a
 second or two, and we don't want users to have to wait for this before the page loads. The solution is to lazy load
 the inventory using a trigger when the page loads.
 
@@ -122,7 +124,7 @@ update the inventory when a user puts an item in the basket.
 
 **Instructions**
 
-Add a `<div>` tag to the `products` page, and use `hx-trigger` to fetch the inventory from the endpoint
+There is an empty `<div>` tag in the `products` page with the class name `product-stock`, use `hx-trigger` to fetch the inventory from the endpoint
 `/inventory?productId=<id>`. Add the `/three-dots.svg` image to use as a loading indicator. Read about the required
 css classes and the `hx-indicator` attribute to connect it to the item being loaded.
 
@@ -148,7 +150,7 @@ Add functionality to remove one item from the cart, and to clear the cart.
 **Instructions** 
 
 
-**Bonus:** If you want, you can add css-transitions to make a element fade out when deleting.
+**Bonus:** If you want, you can add css-transitions to make an element fade out when deleting.
 Useful resource:   
 **https://htmx.org/attributes/hx-delete/**  
 **https://htmx.org/examples/animations/#fade-out-on-swap**

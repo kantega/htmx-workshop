@@ -58,10 +58,23 @@ namespace htmx_test.Controllers
             GetCart().AddProduct(product);
             _inventoryRepository.ReduceStock(product, 1);
 
-            Response.Headers.Add("HX-trigger", "cart-updated, stock-updated-" + productId);
+          
             ViewBag.product = product;
 
             return PartialView("/Views/Webshop/add-to-cart-success.cshtml");
+
+        }
+
+        [Route("webshop/add-to-cart-full-reload")]
+        public void AddToCartFullReload(int productId)
+        {
+
+            var product = _productRepository.FindProductById(productId);
+
+            GetCart().AddProduct(product);
+            _inventoryRepository.ReduceStock(product, 1);
+
+            Response.Redirect("/webshop");
 
         }
 

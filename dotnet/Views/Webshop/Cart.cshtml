@@ -9,8 +9,7 @@
 
 <div class="d-flex justify-content-between p-4">
     <h2>Shopping cart <i class="bi bi-cart4"></i></h2>
-    <button class="btn btn-sm" style="background-color: #EE3A64; color: white;"
-            hx-delete="webshop/cart">
+    <button class="btn btn-danger">
         Clear <i class="bi bi-trash"></i>
     </button>
 </div>
@@ -33,12 +32,12 @@
                 <td>@item.Product.Name</td>
                 <td class="text-end">@item.Quantity</td>
                 <td class="text-end">@FormatCurrency(@item.GetSum())</td>
-                <td><button hx-post="/webshop/remove-from-cart" name="productId" value="@item.Product.ID" class="btn btn-sm btn-outline-danger">Remove</button> </td>
+                <td><button class="btn btn-sm btn-outline-danger">Remove</button> </td>
             </tr>
         }
         <tr>
             <th colspan="2">Total</th>
-            <th class="text-end">@FormatCurrency(@ViewBag.totalSum)</th>
+            <th class="text-end" style="width: 100px;">@FormatCurrency(@ViewBag.totalSum)</th>
         </tr>
     </tbody>
 </table>
