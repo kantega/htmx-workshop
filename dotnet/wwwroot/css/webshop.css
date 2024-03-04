@@ -94,7 +94,7 @@ p, td, label, tr, button {
     display: grid;
     grid-template-areas: "image description stock"
         "image description addtobasket";
-    grid-template-columns: 100px 1fr auto;
+    grid-template-columns: 120px 1fr auto;
     grid-template-rows: 1fr auto;
     height: 180px;
 }
@@ -105,7 +105,7 @@ p, td, label, tr, button {
 
 .product-image {
     grid-area: image;
-    width: 90px;
+    width: 120px;
 }
 
     .product-image img {

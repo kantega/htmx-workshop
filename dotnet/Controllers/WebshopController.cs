@@ -109,7 +109,6 @@ namespace htmx_test.Controllers
         public Cart GetCart()
         {
             var sessionid = Request.Cookies["JSESSIONID"];
-            Console.WriteLine("Session  id: " + sessionid);
             return _sessionManager.GetCart(sessionid!);
         }
     }
