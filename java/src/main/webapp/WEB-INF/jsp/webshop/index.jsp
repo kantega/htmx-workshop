@@ -7,7 +7,7 @@
 
 <t:layout>
     <div id="page-layout">
-        <div id="alert">
+        <div id="banner">
         </div>
 
         <div id="search" class="mb-2">

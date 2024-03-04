@@ -25,9 +25,7 @@ the entire page.
 
 **Instructions**
 
-Using the `hx-post` attribute, make the "Add to cart" form post to `/webshop/add-to-cart`. At present, this endpoint
-returns the entire page, but we want to change this so that only the form is updated. Change the endpoint, so it returns
-a fragment of HTML containing only the form, plus the text "Added to cart". Use `hx-swap` to replace the entire form
+Remove the `method` and `action` attribute from the form. Then using the `hx-post` attribute, make the "Add to cart" form, post to `/webshop/add-to-cart`. Use `hx-swap` to replace the entire form
 with the html returned by the endpoint. The default behavior for `hx-target` is to swap out the element that made the
 request, so that should suit us fine.
 
@@ -63,8 +61,12 @@ successfully added to the cart. This custom event should be unique and descripti
 Spring MVC:```response.setHeader("HX-Trigger", "cart-updated");```  
 .NET: ```Response.Headers.Add("HX-trigger", "cart-updated");```
 
-Implement HTMX Event Listener: In the shopping cart component, add an HTMX event listener to listen for the custom event
+Implement HTMX Event Listener: In the shopping cart component in the index file, add an HTMX event listener (hx-trigger) to listen for the custom event
 defined in the server response header, so that it fetches the updated shopping cart from `/webshop/cart`.
+
+**Test that it works**
+You would have to restart the application to apply the changes made on server. 
+Try adding a product to the cart, and the cart should be updated without having to do a manual page reload.
 
 **Resources**
 
@@ -83,7 +85,7 @@ to the shopping cart.
 
 **Instructions**
 
-Add a `<div>` to the top of the page. There is an endpoint called `/webshop/shipping-info` that will return the banner
+Use the empty div with id="banner" in the index file. There is an endpoint called `/webshop/shipping-info` that will return the banner
 text. Use `hx-trigger` in combination with `hx-get` to fetch the contents. You can listen to several events
 using a comma separated list of event names.
 
