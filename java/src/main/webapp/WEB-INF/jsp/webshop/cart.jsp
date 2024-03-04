@@ -23,7 +23,7 @@
                     <td>${item.product.name}</td>
                     <td class="text-end">${item.quantity}</td>
                     <td class="text-end"><fmt:formatNumber value="${item.sum}" type="currency" /></td>
-                    <td><button hx-post="/webshop/remove-from-cart" name="productId" value="${item.product.id}" class="btn btn-sm btn-outline-danger">Remove</button> </td>
+                    <td><button class="btn btn-sm btn-outline-danger">Remove</button> </td>
                 </tr>
             </c:forEach>
             <tr>
@@ -33,6 +33,6 @@
             </tbody>
         </table>
 
-        <button class="btn btn-danger" hx-delete="/webshop/cart">Clear</button>
+        <button class="btn btn-danger">Clear</button>
     </c:otherwise>
 </c:choose>

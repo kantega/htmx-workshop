@@ -27,7 +27,7 @@ public class InventoryRepository {
     }
 
     public void reduceStock(Product product, int count) {
-        int currentStock = productItemsInStock.get(product.getId());
+        int currentStock = getItemsInStock(product.getId());
         productItemsInStock.put(product.getId(), currentStock - count);
     }
 

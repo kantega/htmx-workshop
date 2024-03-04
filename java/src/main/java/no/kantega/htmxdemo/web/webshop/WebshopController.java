@@ -57,9 +57,17 @@ public class WebshopController {
         cart.addProduct(product);
         inventoryRepository.reduceStock(product, 1);
 
-        response.setHeader("HX-Trigger", "cart-updated, stock-updated-" + productId);
         return new ModelAndView("/webshop/add-to-cart-success")
                 .addObject("product", product);
+    }
+
+    @PostMapping("add-to-cart-full-reload")
+    public ModelAndView addToCartFullReload(@RequestParam("productId") int productId, @SessionAttribute Cart cart, HttpServletResponse response) {
+        Product product = productRepository.findById(productId);
+
+        cart.addProduct(product);
+        inventoryRepository.reduceStock(product, 1);
+        return index(cart);
     }
 
     @PostMapping("remove-from-cart")

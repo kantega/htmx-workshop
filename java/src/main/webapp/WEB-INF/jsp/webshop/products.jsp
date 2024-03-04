@@ -21,23 +21,16 @@
             </div>
             <div class="card-body product-layout">
                 <div class="product-image">
-                    <img src="${product.image}"/>
+                    <img src="/${product.image}"/>
                 </div>
                 <div class="product-description">
                     <p>${product.description}</p>
                 </div>
                 <div class="product-stock">
-                    <div hx-trigger="load, stock-updated-${product.id} from:body"
-                         hx-get="/inventory?productId=${product.id}" hx-indicator="#dots-${product.id}">
-                    </div>
-                    <img src="/three-dots.svg" style="width: 30px" class="htmx-indicator"
-                         id="dots-${product.id}"/>
+
                 </div>
                 <div class="product-addtobasket">
-                    <form hx-post="/webshop/add-to-cart"
-                          hx-target="this"
-                          hx-swap="outerHTML"
-                    >
+                    <form method="post" action="/webshop/add-to-cart-full-reload">
                         <input type="hidden" name="productId" value="${product.id}">
 
                         <button class="btn btn-primary mt-4">
