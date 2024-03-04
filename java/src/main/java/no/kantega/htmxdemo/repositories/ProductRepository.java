@@ -38,7 +38,7 @@ public class ProductRepository {
         products.add(createProduct("Man on Fire (2004) DVD", "Man on Fire is a 2004 action thriller film directed by Tony Scott from a screenplay by Brian Helgeland, and based on the 1980 novel of the same name by A. J. Quinnell.", "179.00", "https://upload.wikimedia.org/wikipedia/en/e/e8/Man_on_fireposter.jpg"));
         products.add(createProduct("The Departed (2006) Blueray", "The Departed is a 2006 American epic crime thriller film directed by Martin Scorsese and written by William Monahan. It is both a remake of the 2002 Hong Kong film Infernal Affairs and also loosely based on the real-life Boston Winter Hill Gang.", "129.99", "https://upload.wikimedia.org/wikipedia/en/5/50/Departed234.jpg"));
         products.add(createProduct("Avatar (2009) Blueray", "Avatar is a 2009 epic science fiction film directed, written, co-produced, and co-edited by James Cameron and starring Sam Worthington, Zoe Saldana, Stephen Lang, Michelle Rodriguez, and Sigourney Weaver. It is the first installment in the Avatar film series.", "269.49", "https://upload.wikimedia.org/wikipedia/en/d/d6/Avatar_%282009_film%29_poster.jpg"));
-        products.add(createProduct("The Curious Case of Benjamin Button", "The Curious Case of Benjamin Button is a 2008 American fantasy romantic drama film directed by David Fincher. The storyline by Eric Roth and Robin Swicord is loosely based on the 1922 short story of the same name by F. Scott Fitzgerald.", "129.00", "https://upload.wikimedia.org/wikipedia/en/7/7c/The_Curious_Case_of_Benjamin_Button_%28film%29.png"));
+        products.add(createProduct("The Curious Case of Benjamin Button (2008) DVD", "The Curious Case of Benjamin Button is a 2008 American fantasy romantic drama film directed by David Fincher. The storyline by Eric Roth and Robin Swicord is loosely based on the 1922 short story of the same name by F. Scott Fitzgerald.", "129.00", "https://upload.wikimedia.org/wikipedia/en/7/7c/The_Curious_Case_of_Benjamin_Button_%28film%29.png"));
     }
 
     private static Product createProduct(String name, String description, String price, String image) {
@@ -59,7 +59,7 @@ public class ProductRepository {
 
     public List<Product> findByName(String name) {
         return products.stream()
-                .filter(p -> p.getName().toLowerCase().contains(name))
+                .filter(p -> p.getName().toLowerCase().contains(name.toLowerCase()))
                 .toList();
     }
 }

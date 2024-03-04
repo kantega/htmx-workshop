@@ -65,8 +65,9 @@ Implement HTMX Event Listener: In the shopping cart component in the index file,
 defined in the server response header, so that it fetches the updated shopping cart from `/webshop/cart`.
 
 **Test that it works**
-You would have to restart the application to apply the changes made on server. 
-Try adding a product to the cart, and the cart should be updated without having to do a manual page reload.
+
+You would have to restart the application to apply the changes made to the endpoint. 
+Try adding a product to the cart, the cart should be updated without having to do a manual page reload.
 
 **Resources**
 
@@ -106,8 +107,8 @@ Create a search box that filters products as the user types
 **Instructions**
 
 Use the search box at the top of the page. There is a non-working html fragment in the `index` page you can use. Use
-`hx-get` to fetch search results from the endpoint called `/webshop/search`. Listen for events `keyup`, `search`
-and `changed`, and experiment with an appropriate `delay` to avoid searching after every keystroke.
+`hx-get` to fetch search results from the endpoint called `/webshop/search` on the input element. Listen for events `keyup`, `search`
+and `changed`, and experiment with an appropriate `delay` to avoid searching after every keystroke. The target should be the div containing the products.
 
 **Resources**
 

@@ -33,8 +33,7 @@ namespace htmx_test.Repositories
                     new Product { ID = 17, Name = "Man on Fire (2004) DVD", Description = "Man on Fire is a 2004 action thriller film directed by Tony Scott from a screenplay by Brian Helgeland, and based on the 1980 novel of the same name by A. J. Quinnell.", Price = 179.00m, Image = "https://upload.wikimedia.org/wikipedia/en/e/e8/Man_on_fireposter.jpg" },
                     new Product { ID = 18, Name = "The Departed (2006) Blueray", Description = "The Departed is a 2006 American epic crime thriller film directed by Martin Scorsese and written by William Monahan. It is both a remake of the 2002 Hong Kong film Infernal Affairs and also loosely based on the real-life Boston Winter Hill Gang.", Price = 129.99m, Image = "https://upload.wikimedia.org/wikipedia/en/5/50/Departed234.jpg" },
                     new Product { ID = 19, Name = "Avatar (2009) Blueray", Description = "Avatar is a 2009 epic science fiction film directed, written, co-produced, and co-edited by James Cameron and starring Sam Worthington, Zoe Saldana, Stephen Lang, Michelle Rodriguez, and Sigourney Weaver. It is the first installment in the Avatar film series.", Price = 269.49m, Image = "https://upload.wikimedia.org/wikipedia/en/d/d6/Avatar_%282009_film%29_poster.jpg" },
-                    new Product { ID = 20, Name = "The Curious Case of Benjamin Button", Description = "The Curious Case of Benjamin Button is a 2008 American fantasy romantic drama film directed by David Fincher. The storyline by Eric Roth and Robin Swicord is loosely based on the 1922 short story of the same name by F. Scott Fitzgerald.", Price = 129.00m, Image = "https://upload.wikimedia.org/wikipedia/en/7/7c/The_Curious_Case_of_Benjamin_Button_%28film%29.png" },
-
+                    new Product { ID = 20, Name = "The Curious Case of Benjamin Button (2008) DVD", Description = "The Curious Case of Benjamin Button is a 2008 American fantasy romantic drama film directed by David Fincher. The storyline by Eric Roth and Robin Swicord is loosely based on the 1922 short story of the same name by F. Scott Fitzgerald.", Price = 129.00m, Image = "https://upload.wikimedia.org/wikipedia/en/7/7c/The_Curious_Case_of_Benjamin_Button_%28film%29.png" },
 
                 };
         }
@@ -50,7 +49,7 @@ namespace htmx_test.Repositories
 
         public IEnumerable<Product> findByName(String q)
         {
-           return _products.Where(p => p.Name.Contains(q)).ToList();
+           return _products.Where(p => p.Name.ToLower().Contains(q.ToLower())).ToList();
         }
     }
 }
