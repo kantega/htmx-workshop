@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/webshop.css">
 
     <script src="/webjars/bootstrap/5.3.2/js/bootstrap.js"></script>
-    <script src="/webjars/htmx.org/1.9.6/dist/htmx.js"></script>
+    <script src="/webjars/htmx.org/1.9.10/dist/htmx.js"></script>
 </head>
 <body>
 
