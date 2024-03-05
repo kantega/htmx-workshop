@@ -1,16 +1,15 @@
 # HTMX-workshop
 
 HTMX is a powerful tool for building modern web applications without JavaScript.
-In this workshop, we'll dive into the basics of HTMX and learn how to enhance your web projects with dynamic,
-interactive features.
-
-Ready to explore the world of HTMX and revolutionize the way you build web applications? Let's dive in and discover the
-power of HTMX together!
+In this workshop, we'll introduce the basic concepts of HTMX by making progressive enhancements to a webshop.
 
 ## Run the application
-Spring MVC: go to the folder `java` and run `mvn spring-boot:run` or use the run-button in your editor. Then open a browser and go to http://localhost:8080
 
-ASP.NET: go to the folder `dotnet` and run `dotnet watch` to get hot-reload on changes made to Razor files. A browser should open automatically when the application is finished building.
+Spring MVC: go to the folder `java` and run `mvn spring-boot:run` or use the run-button in your editor. Then open a
+browser and go to http://localhost:8080
+
+ASP.NET: go to the folder `dotnet` and run `dotnet watch` to get hot-reload on changes made to Razor files. A browser
+should open automatically when the application is finished building.
 
 ## Exercise 1 - Dynamic "Add to cart"
 
@@ -25,9 +24,13 @@ the entire page.
 
 **Instructions**
 
-Remove the `method` and `action` attribute from the form. Then using the `hx-post` attribute, make the "Add to cart" form, post to `/webshop/add-to-cart`. Use `hx-swap` to replace the entire form
-with the html returned by the endpoint. The default behavior for `hx-target` is to swap out the element that made the
-request, so that should suit us fine.
+Find the "Add to cart" button on the Products page. The `<form>` currently posts to `/webshop/add-to-cart-full-reload`
+but we want to change that. Remove the `method` and `action` attributes from the form. Then, 
+using the `hx-post` attribute, make the "Add to cart" form post to `/webshop/add-to-cart`,
+
+This endpoint returns a fragment of HTML containing only the form, plus the text "Added to cart". Use `hx-swap` to
+replace the entire form with the html returned by the endpoint. The default behavior for `hx-target` is to swap out the
+element that made the request, so that should suit us fine.
 
 **Test that it works**
 

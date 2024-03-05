@@ -50,6 +50,9 @@ public class WebshopController {
                 .addObject("products", products);
     }
 
+    /**
+     * Adds a product to the shopping cart, and returns html for the button with a confirmation text.
+     */
     @PostMapping("add-to-cart")
     public ModelAndView addToCart(@RequestParam("productId") int productId, @SessionAttribute Cart cart, HttpServletResponse response) {
         Product product = productRepository.findById(productId);
@@ -61,6 +64,9 @@ public class WebshopController {
                 .addObject("product", product);
     }
 
+    /**
+     * Adds a product to the shopping cart, and returns a full page. This is the endpoint we are getting rid of.
+     */
     @PostMapping("add-to-cart-full-reload")
     public ModelAndView addToCartFullReload(@RequestParam("productId") int productId, @SessionAttribute Cart cart, HttpServletResponse response) {
         Product product = productRepository.findById(productId);
