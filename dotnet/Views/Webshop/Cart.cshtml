@@ -27,7 +27,7 @@
                 <td class="text-end">@FormatCurrency(@item.GetSum())</td>
                 <td>
                     <form action="/webshop/remove-from-cart-full-reload" method="post">
-                        <input type="hidden" name="productId" value="@item.Product.ID">
+                        <input type="hidden" name="productId" value="@item.Product.Id">
                         <button class="btn btn-sm btn-outline-danger">Remove</button>
                     </form>
                 </td>

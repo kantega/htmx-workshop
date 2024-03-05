@@ -23,13 +23,13 @@ namespace htmx_test.Models
         }
 
         public CartItem? GetItemByProductId(int productID) {
-            return items.FirstOrDefault(p => p.Product.ID == productID);
+            return items.FirstOrDefault(p => p.Product.Id == productID);
         }
 
 
         public List<CartItem> GetItems()
         {
-            return items.OrderBy(i => i.Product.ID).ToList();
+            return items.OrderBy(i => i.Product.Id).ToList();
         }
 
         public decimal GetTotal()
@@ -46,7 +46,7 @@ namespace htmx_test.Models
 
         public void DeleteProduct(Product product)
         {
-            items.RemoveAll(item => item.Product.ID == product.ID);
+            items.RemoveAll(item => item.Product.Id == product.Id);
         }
 
         public void Clear()

@@ -29,14 +29,14 @@ namespace htmx_test.Repositories
 
         public void ReduceStock(Product product, int count)
         {
-            int currentStock = productItemsInStock.ContainsKey(product.ID) ? productItemsInStock[product.ID] : 0;
-            productItemsInStock[product.ID] = currentStock - count;
+            int currentStock = productItemsInStock.ContainsKey(product.Id) ? productItemsInStock[product.Id] : 0;
+            productItemsInStock[product.Id] = currentStock - count;
         }
 
         public void IncreaseStock(Product product, int count)
         {
-            int currentStock = productItemsInStock.ContainsKey(product.ID) ? productItemsInStock[product.ID] : 0;
-            productItemsInStock[product.ID] = currentStock + count;
+            int currentStock = productItemsInStock.ContainsKey(product.Id) ? productItemsInStock[product.Id] : 0;
+            productItemsInStock[product.Id] = currentStock + count;
         }
 
     }

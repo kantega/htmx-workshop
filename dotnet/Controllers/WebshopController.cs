@@ -120,7 +120,7 @@ namespace htmx_test.Controllers
             foreach (var item in cart)
             {
                 _inventoryRepository.IncreaseStock(item.Product, item.Quantity);
-                events.Add("stock-updated-" + item.Product.ID);
+                events.Add("stock-updated-" + item.Product.Id);
             }
             GetCart().Clear();
             events.Add("cart-updated");
