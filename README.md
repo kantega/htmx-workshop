@@ -37,6 +37,9 @@ element that made the request, so that should suit us fine.
 When you click the "Add to cart" button, you should see the text "Added to cart". However, the shopping cart in the
 top right corner is not updated yet. Proceed to exercise 2 to fix this.
 
+If you click the "Add to cart" button twice, you may notice a full page reload on the second click. This is because
+the "add-to-cart-success" page also needs the `hx-post` and `hx-swap` attributes added to the form.
+
 **Resources**
 
 - https://htmx.org/docs
@@ -112,6 +115,7 @@ Create a search box that filters products as the user types
 Use the search box at the top of the page. There is a non-working html fragment in the `index` page you can use. Use
 `hx-get` to fetch search results from the endpoint called `/webshop/search` on the input element. Listen for events `keyup`, `search`
 and `changed`, and experiment with an appropriate `delay` to avoid searching after every keystroke. The target should be the div containing the products.
+Use `hx-trigger` to replace the list of products on the page with the search results.
 
 **Resources**
 
@@ -119,7 +123,7 @@ and `changed`, and experiment with an appropriate `delay` to avoid searching aft
 
 ## Exercise 5 - Fetching product stock status with HTMX on "load" Event Trigger and hx-indicator
 
-Some services are a bit slow. In this web shop, figuring out how many items are in stock (the inventory) takes about a
+Some services are a bit slow. In this webshop, figuring out how many items are in stock (the inventory) takes about a
 second or two, and we don't want users to have to wait for this before the page loads. The solution is to lazy load
 the inventory using a trigger when the page loads.
 
@@ -130,8 +134,10 @@ update the inventory when a user puts an item in the basket.
 
 **Instructions**
 
-There is an empty `<div>` tag in the `products` page with the class name `product-stock`, use `hx-trigger` to fetch the inventory from the endpoint
-`/inventory?productId=<id>`. Add the `/three-dots.svg` image to use as a loading indicator. Read about the required
+There is an empty `<div>` tag in the `products` page with the class name `product-stock`. Use `hx-get`to fetch the 
+inventory from the endpoint
+`/inventory?productId=<id>` and use the `hx-trigger` to trigger this on page load. 
+Add the `/three-dots.svg` image to use as a loading indicator. Read about the required
 css classes and the `hx-indicator` attribute to connect it to the item being loaded.
 
 To update the inventory information when a user adds a product to the shopping cart, you could send an event as an
@@ -144,23 +150,31 @@ events with data. Note that this requires the use of javascript to read the data
 
 - https://htmx.org/attributes/hx-indicator/
 - https://htmx.org/headers/hx-trigger/
+- https://htmx.org/docs/#special-events
 
 ## Exercise 6 - Delete from cart
 
-We don't have any way to remove items from the shopping cart. Let's fix that. 
+Removing items from the shopping cart reloads the entire page. Let's fix that. 
 
 **Objective**  
 
-Add functionality to remove one item from the cart, and to clear the cart.
+Add functionality to remove one item from the cart, and to clear the cart. Make sure the inventory count is updated 
+on the page.
 
 **Instructions** 
 
-To remove an item from the shopping cart, remove the `action` and `method` attributes from the form wrapping the button. Send a post request to the endpoint `/webshop/remove-from-cart`.
+To remove an item from the shopping cart, remove the `action` and `method` attributes from the form wrapping the button. 
+Send a post request to the endpoint `/webshop/remove-from-cart`.
 
 To clear the cart, remove the entire form wrapping the button. Make the button send a delete request to `/webshop/cart`. 
 
+Send an `HX-Trigger` HTTP Header to update inventory for the items removed from the cart, and to trigger reloading of 
+the cart. 
 
-**Bonus:** If you want, you can add css-transitions to make an element fade out when deleting.
+**Bonus:** 
+
+If you want, you can add css-transitions to make an element fade out when deleting.
+
 Useful resource:   
 **https://htmx.org/attributes/hx-delete/**  
 **https://htmx.org/examples/animations/#fade-out-on-swap**
