@@ -20,7 +20,7 @@ public class InventoryController {
 
     @GetMapping
     public ModelAndView getItemsInStock(@RequestParam int productId) {
-        int itemsInStock = inventoryRepository.getItemsInStock(productId);
+        int itemsInStock = inventoryRepository.getItemsInStockSlow(productId);
         return new ModelAndView("inventory/items-in-stock")
                 .addObject("itemsInStock", itemsInStock);
     }
