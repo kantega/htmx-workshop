@@ -30,7 +30,6 @@ public class InventoryRepository {
         return productItemsInStock.computeIfAbsent(productId, k -> (int) (Math.random() * 40));
     }
 
-
     public void reduceStock(Product product, int count) {
         int currentStock = getItemsInStock(product.getId());
         productItemsInStock.put(product.getId(), currentStock - count);

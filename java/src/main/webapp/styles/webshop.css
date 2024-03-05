@@ -100,6 +100,7 @@ p, td, label, tr, button {
 .product-description {
     grid-area: description;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 .alert-height {
