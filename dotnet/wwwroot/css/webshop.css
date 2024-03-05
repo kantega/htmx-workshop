@@ -22,6 +22,7 @@
         "products cart";
     grid-column-gap: 20px;
     grid-template-rows: auto auto 1fr;
+    grid-template-columns: 3fr 2fr;
 }
 
 h1, h2, h3, th {
@@ -57,7 +58,7 @@ p, td, label, tr, button {
 }
 
 .cart-card {
-    width: 500px;
+    width: 470px;
     background-color: white;
     border-radius: 9px;
 }
@@ -90,6 +91,11 @@ p, td, label, tr, button {
     grid-area: cart;
 }
 
+#cart-container {
+    position: fixed;
+}
+
+
 .product-layout {
     display: grid;
     grid-template-areas: "image description stock"
@@ -105,12 +111,13 @@ p, td, label, tr, button {
 
 .product-image {
     grid-area: image;
-    width: 110px;
 }
 
-    .product-image img {
-        width: 100%;
-    }
+.product-image img {
+    width: 100px;
+    height: 160px;
+    margin-right: 20px;
+ }
 
 .product-stock {
     grid-area: stock;

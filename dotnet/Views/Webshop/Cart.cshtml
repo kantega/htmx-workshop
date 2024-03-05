@@ -7,12 +7,7 @@
 }
 
 
-<div class="d-flex justify-content-between p-4">
-    <h2>Shopping cart <i class="bi bi-cart4"></i></h2>
-    <button class="btn btn-danger">
-        Clear <i class="bi bi-trash"></i>
-    </button>
-</div>
+<h2>Shopping cart</h2>
 
 <table class="table table-striped">
     <thead>
@@ -26,19 +21,27 @@
 
         @foreach (var item in ViewBag.cartList)
         {
-
-
             <tr>
                 <td>@item.Product.Name</td>
                 <td class="text-end">@item.Quantity</td>
                 <td class="text-end">@FormatCurrency(@item.GetSum())</td>
-                <td><button class="btn btn-sm btn-outline-danger">Remove</button> </td>
+                <td>
+                    <form action="/webshop/remove-from-cart-full-reload" method="post">
+                        <input type="hidden" name="productId" value="@item.Product.ID">
+                        <button class="btn btn-sm btn-outline-danger">Remove</button>
+                    </form>
+                </td>
             </tr>
         }
         <tr>
             <th colspan="2">Total</th>
-            <th class="text-end" style="width: 100px;">@FormatCurrency(@ViewBag.totalSum)</th>
+            <th class="text-end">@FormatCurrency(@ViewBag.totalSum)</th>
+            <th></th>
         </tr>
     </tbody>
 </table>
+
+<form action="/webshop/clear-cart-full-reload" method="post">
+    <button class="btn btn-danger">Clear</button>
+</form>
 

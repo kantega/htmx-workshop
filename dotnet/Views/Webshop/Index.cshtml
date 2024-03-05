@@ -4,14 +4,18 @@
 <div id="page-layout" class="p-4">
 
     <div id="banner">
+        <!-- place the shipping info banner here -->
     </div>
 
     <div id="search" class="mb-2">
-        <label>
-            Search:
-            <input type="search" class="form-control form-control-sm"
-                   name="q">
-        </label>
+   @* uncomment this to add search function
+      <label>
+          Search:
+          <input type="search" class="form-control form-control-sm"
+                 name="q">
+      </label>
+    *@
+      
     </div>
 
     @* Product list *@
@@ -21,8 +25,10 @@
 
 
     @* Shopping cart *@
-    <div id="cart" class="cart-card scroll">
-        @await Html.PartialAsync("Cart")
+    <div id="cart">
+        <div id="cart-container">
+            @await Html.PartialAsync("Cart")
+        </div>
     </div>
 
 </div>
