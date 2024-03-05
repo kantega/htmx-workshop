@@ -155,6 +155,10 @@ Add functionality to remove one item from the cart, and to clear the cart.
 
 **Instructions** 
 
+To remove an item from the shopping cart, remove the `action` and `method` attributes from the form wrapping the button. Send a post request to the endpoint `/webshop/remove-from-cart`.
+
+To clear the cart, remove the entire form wrapping the button. Make the button send a delete request to `/webshop/cart`. 
+
 
 **Bonus:** If you want, you can add css-transitions to make an element fade out when deleting.
 Useful resource:   
