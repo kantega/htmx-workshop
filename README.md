@@ -5,10 +5,10 @@ In this workshop, we'll introduce the basic concepts of HTMX by making progressi
 
 ## Run the application
 
-Spring MVC: go to the folder `java` and run `mvn spring-boot:run` or use the run-button in your editor. Then open a
+Spring MVC: In a terminal, go to the folder `java` and run `mvn spring-boot:run` or use the run-button in your editor. Then open a
 browser and go to http://localhost:8080
 
-ASP.NET: go to the folder `dotnet` and run `dotnet watch` to get hot-reload on changes made to Razor files. A browser
+ASP.NET: In a terminal, go to the folder `dotnet` and run `dotnet watch` to get hot-reload on changes made to Razor files. A browser
 should open automatically when the application is finished building.
 
 ## Exercise 1 - Dynamic "Add to cart"

@@ -73,7 +73,7 @@ public class WebshopController {
 
         cart.addProduct(product);
         inventoryRepository.reduceStock(product, 1);
-        return index(cart);
+        return new ModelAndView("redirect:/webshop");
     }
 
     @PostMapping("remove-from-cart")
@@ -86,6 +86,16 @@ public class WebshopController {
         response.setHeader("HX-Trigger", "cart-updated, stock-updated-" + productId);
     }
 
+    @PostMapping("remove-from-cart-full-reload")
+    public ModelAndView removeFromCartFullReload(@RequestParam("productId") int productId, @SessionAttribute Cart cart, HttpServletResponse response) {
+        Product product = productRepository.findById(productId);
+
+        cart.removeProduct(product);
+        inventoryRepository.increaseStock(product, 1);
+
+        return new ModelAndView("redirect:/webshop");
+    }
+
     @DeleteMapping("cart")
     public void emptyCart(Cart cart, HttpServletResponse response) {
         List<String> events = new ArrayList<>();
@@ -96,6 +106,12 @@ public class WebshopController {
         cart.clear();
         events.add("cart-updated");
         response.setHeader("HX-Trigger", String.join(", ", events));
+    }
+
+    @PostMapping("clear-cart-full-reload")
+    public ModelAndView emptyCartFullReload(Cart cart, HttpServletResponse response) {
+        cart.clear();
+        return new ModelAndView("redirect:/webshop");
     }
 
     @GetMapping("shipping-info")

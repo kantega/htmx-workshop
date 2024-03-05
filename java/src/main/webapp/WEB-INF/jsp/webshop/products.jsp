@@ -21,7 +21,7 @@
             </div>
             <div class="card-body product-layout">
                 <div class="product-image">
-                    <img style="height: 160px;" src="${product.image}"/>
+                    <img src="${product.image}"/>
                 </div>
                 <div class="product-description">
                     <p>${product.description}</p>

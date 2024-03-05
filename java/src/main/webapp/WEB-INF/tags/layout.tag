@@ -13,7 +13,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-gradient mb-4" style="background-color: #1d002f;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="/webshop">
             <img src="/logo.svg" style="width: 150px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"

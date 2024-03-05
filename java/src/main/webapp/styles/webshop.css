@@ -21,6 +21,7 @@
                              "products cart";
     grid-column-gap: 20px;
     grid-template-rows: auto auto 1fr;
+    grid-template-columns: 3fr 2fr;
 }
 
 #search {
@@ -37,6 +38,10 @@
 
 #cart {
     grid-area: cart;
+}
+
+#cart-container {
+    position: fixed;
 }
 
 h1, h2, h3, th {
@@ -67,7 +72,7 @@ p, td, label, tr, button {
 
 .product-layout {
     display: grid;
-    grid-template-areas: "image description stock"
+    grid-template-areas:     "image description stock"
                              "image description addtobasket";
     grid-template-columns: 100px 1fr auto;
     grid-template-rows: 1fr auto;
@@ -80,11 +85,12 @@ p, td, label, tr, button {
 
 .product-image {
     grid-area: image;
-    width: 90px;
 }
 
 .product-image img {
-    width: 100%;
+    width: 100px;
+    height: 160px;
+    margin-right: 20px;
 }
 
 .product-stock {
@@ -93,6 +99,7 @@ p, td, label, tr, button {
 
 .product-description {
     grid-area: description;
+    padding-left: 20px;
 }
 
 .alert-height {
