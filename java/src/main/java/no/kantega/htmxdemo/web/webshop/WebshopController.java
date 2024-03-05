@@ -83,7 +83,7 @@ public class WebshopController {
         cart.removeProduct(product);
         inventoryRepository.increaseStock(product, 1);
 
-        response.setHeader("HX-Trigger", "cart-updated, stock-updated-" + productId);
+        //TODO: Add HX-Trigger http header to trigger cart reload and inventory update
     }
 
     @PostMapping("remove-from-cart-full-reload")
@@ -98,14 +98,12 @@ public class WebshopController {
 
     @DeleteMapping("cart")
     public void emptyCart(Cart cart, HttpServletResponse response) {
-        List<String> events = new ArrayList<>();
         for (Cart.CartItem item : cart.getItems()) {
             inventoryRepository.increaseStock(item.getProduct(), item.getQuantity());
-            events.add("stock-updated-" + item.getProduct().getId());
         }
         cart.clear();
-        events.add("cart-updated");
-        response.setHeader("HX-Trigger", String.join(", ", events));
+
+        //TODO: Add HX-Trigger http header to trigger cart reload and inventory update
     }
 
     @PostMapping("clear-cart-full-reload")
