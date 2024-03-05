@@ -10,7 +10,7 @@
         No products found
     </c:if>
     <c:forEach var="product" items="${products}">
-        <div class="card mb-2">
+        <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div>
                     <h3>${product.name}</h3>
