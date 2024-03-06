@@ -5,12 +5,12 @@ namespace htmx_test.Controllers
     public class SessionManager
     {
 
-        private readonly IDictionary<String, Cart> carts = new Dictionary<String, Cart>();
+        private Cart _cart = new Cart();
 
         public Cart GetCart(String sessionId)
         {
-            if (!carts.ContainsKey(sessionId)) carts[sessionId] = new Cart();
-            return carts[sessionId];
+            //TODO: Implement proper session handling
+            return _cart;
         }
 
     }
