@@ -125,6 +125,7 @@ p, td, label, tr, button {
 
 .product-description {
     grid-area: description;
+    padding-right: 20px;
 }
 
   .alert-height {

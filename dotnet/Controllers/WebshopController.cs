@@ -92,8 +92,7 @@ namespace htmx_test.Controllers
 
             _inventoryRepository.IncreaseStock(product, 1);
 
-
-            Response.Headers.Add("HX-Trigger", "cart-updated, stock-updated-" + productId);
+            // TODO: Add HX-Trigger http header to trigger cart reload and inventory update
 
         }
 
@@ -115,16 +114,14 @@ namespace htmx_test.Controllers
         [Route("webshop/cart")]
         public void EmptyCart()
         {
-            List<string> events = new List<string>();
             var cart = GetCart().GetItems();
             foreach (var item in cart)
             {
                 _inventoryRepository.IncreaseStock(item.Product, item.Quantity);
-                events.Add("stock-updated-" + item.Product.Id);
             }
             GetCart().Clear();
-            events.Add("cart-updated");
-            Response.Headers.Add("HX-Trigger", String.Join(", ", events));
+
+            // TODO: Add HX-Trigger http header to trigger cart reload and inventory update
         }
 
         [Route("webshop/clear-cart-full-reload")]
