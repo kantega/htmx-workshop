@@ -5,10 +5,12 @@ In this workshop, we'll introduce the basic concepts of HTMX by making progressi
 
 ## Run the application
 
-Spring MVC: In a terminal, go to the folder `java` and run `mvn spring-boot:run` or use the run-button in your editor. Then open a
+Spring MVC: In a terminal, go to the folder `java` and run `mvn spring-boot:run` or use the run-button in your editor.
+Then open a
 browser and go to http://localhost:8080
 
-ASP.NET: In a terminal, go to the folder `dotnet` and run `dotnet watch` to get hot-reload on changes made to Razor files. A browser
+ASP.NET: In a terminal, go to the folder `dotnet` and run `dotnet watch` to get hot-reload on changes made to Razor
+files. A browser
 should open automatically when the application is finished building.
 
 ## Exercise 1 - Dynamic "Add to cart"
@@ -17,7 +19,7 @@ In this exercise, you'll start with a traditional full-page-reload application w
 the entire page. Your task is to enhance the user experience by implementing HTMX to make the "Add" functionality
 dynamic.
 
-**Objective**  
+**Objective**
 
 Replace the full-page reload behavior with an HTMX request that adds a product to the shopping cart without refreshing
 the entire page.
@@ -25,7 +27,7 @@ the entire page.
 **Instructions**
 
 Find the "Add to cart" button on the Products page. The `<form>` currently posts to `/webshop/add-to-cart-full-reload`
-but we want to change that. Remove the `method` and `action` attributes from the form. Then, 
+but we want to change that. Remove the `method` and `action` attributes from the form. Then,
 using the `hx-post` attribute, make the "Add to cart" form post to `/webshop/add-to-cart`,
 
 This endpoint returns a fragment of HTML containing only the form, plus the text "Added to cart". Use `hx-swap` to
@@ -52,12 +54,12 @@ We want the shopping cart in the top right corner to update automatically when w
 This can be achieved by making it listen for an event that we trigger when the item is added. We can send the event
 as an HTTP Header from the server in the response from the `/webshop/add-to-cart` endpoint.
 
-**Objective**  
+**Objective**
 
 Update the shopping cart in the top right corner when the user clicks the "Add to cart" button, without doing a full
 page reload.
 
-**Instructions**  
+**Instructions**
 
 Define Custom Event: Modify the server response to include a custom event in the response header when a product is
 successfully added to the cart. This custom event should be unique and descriptive, such as "cart-updated".
@@ -67,13 +69,15 @@ successfully added to the cart. This custom event should be unique and descripti
 Spring MVC:```response.setHeader("HX-Trigger", "cart-updated");```  
 .NET: ```Response.Headers.Add("HX-trigger", "cart-updated");```
 
-Implement HTMX Event Listener: In the shopping cart component in the index file, add an HTMX event listener (hx-trigger) to listen for the custom event
+Implement HTMX Event Listener: In the shopping cart component in the index file, add an HTMX event listener (hx-trigger)
+to listen for the custom event
 defined in the server response header, so that it fetches the updated shopping cart from `/webshop/cart`.
 
 **Test that it works**
 
-You would have to restart the application to apply the changes made to the endpoint. 
-Try adding a product to the cart, the cart should be updated without having to do a manual page reload.
+Restart the application to apply the changes made to the endpoint.
+Try adding a product to the cart. The cart should be updated without having to do a manual page reload. Check the
+network pane in your browser to see the requests being made to the backend.
 
 **Resources**
 
@@ -92,7 +96,8 @@ to the shopping cart.
 
 **Instructions**
 
-Use the empty div with id="banner" in the index file. There is an endpoint called `/webshop/shipping-info` that will return the banner
+Use the empty div with id="banner" in the index file. There is an endpoint called `/webshop/shipping-info` that will
+return the banner
 text. Use `hx-trigger` in combination with `hx-get` to fetch the contents. You can listen to several events
 using a comma separated list of event names.
 
@@ -112,10 +117,11 @@ Create a search box that filters products as the user types
 
 **Instructions**
 
-Use the search box at the top of the page. There is a non-working html fragment in the `index` page you can use. Use
-`hx-get` to fetch search results from the endpoint called `/webshop/search` on the input element. Listen for events `keyup`, `search`
-and `changed`, and experiment with an appropriate `delay` to avoid searching after every keystroke. The target should be the div containing the products.
-Use `hx-trigger` to replace the list of products on the page with the search results.
+- Use the search box at the top of the page. There is a non-working html fragment in the `index` page you can use.
+- Use `hx-get` to fetch search results from the endpoint called `/webshop/search` on the input element.
+- Use `hx-trigger` to listen for events `keyup`, `search` and `changed`, and experiment with an appropriate `delay` to
+  avoid searching after every keystroke.
+- Use `hx-target` to replace the list of products on the page with the search results.
 
 **Resources**
 
@@ -130,20 +136,20 @@ the inventory using a trigger when the page loads.
 **Objective**
 
 Display product inventory on page load. Use a loading indicator as a placeholder while the inventory loads. As a bonus,
-update the inventory when a user puts an item in the basket.
+update the inventory when a user adds or removes an item from the shopping cart.
 
 **Instructions**
 
-There is an empty `<div>` tag in the `products` page with the class name `product-stock`. Use `hx-get`to fetch the 
+There is an empty `<div>` tag in the `products` page with the class name `product-stock`. Use `hx-get`to fetch the
 inventory from the endpoint
-`/inventory?productId=<id>` and use the `hx-trigger` to trigger this on page load. 
+`/inventory?productId=<id>` and use the `hx-trigger` to trigger this on page load.
 Add the `/three-dots.svg` image to use as a loading indicator. Read about the required
 css classes and the `hx-indicator` attribute to connect it to the item being loaded.
 
 To update the inventory information when a user adds a product to the shopping cart, you could send an event as an
 HTTP Header as a response to `/webshop/add-to-cart`. You could for instance name the event
 `stock-updated-<product id>`, to be able to differentiate between products. When sending the `HX-Trigger` HTTP Header,
-you can add several events by separating them with a comma. Alternatively, use the json syntax for events to send 
+you can add several events by separating them with a comma. Alternatively, use the json syntax for events to send
 events with data. Note that this requires the use of javascript to read the data.
 
 **Resources**
@@ -154,24 +160,24 @@ events with data. Note that this requires the use of javascript to read the data
 
 ## Exercise 6 - Delete from cart
 
-Removing items from the shopping cart reloads the entire page. Let's fix that. 
+Removing items from the shopping cart reloads the entire page. Let's fix that.
 
-**Objective**  
+**Objective**
 
-Add functionality to remove one item from the cart, and to clear the cart. Make sure the inventory count is updated 
+Add functionality to remove one item from the cart, and to clear the cart. Make sure the inventory count is updated
 on the page.
 
-**Instructions** 
+**Instructions**
 
-To remove an item from the shopping cart, remove the `action` and `method` attributes from the form wrapping the button. 
+To remove an item from the shopping cart, remove the `action` and `method` attributes from the form wrapping the button.
 Send a post request to the endpoint `/webshop/remove-from-cart`.
 
-To clear the cart, remove the entire form wrapping the button. Make the button send a delete request to `/webshop/cart`. 
+To clear the cart, remove the entire form wrapping the button. Make the button send a delete request to `/webshop/cart`.
 
-Send an `HX-Trigger` HTTP Header to update inventory for the items removed from the cart, and to trigger reloading of 
-the cart. 
+Send an `HX-Trigger` HTTP Header to update inventory for the items removed from the cart, and to trigger reloading of
+the cart.
 
-**Bonus:** 
+**Bonus:**
 
 If you want, you can add css-transitions to make an element fade out when deleting.
 
