@@ -30,17 +30,14 @@ Find the "Add to cart" button on the Products page. The `<form>` currently posts
 but we want to change that. Remove the `method` and `action` attributes from the form. Then,
 using the `hx-post` attribute, make the "Add to cart" form post to `/webshop/add-to-cart`,
 
-This endpoint returns a fragment of HTML containing only the form, plus the text "Added to cart". Use `hx-swap` to
-replace the entire form with the html returned by the endpoint. The default behavior for `hx-target` is to swap out the
-element that made the request, so that should suit us fine.
+This endpoint returns a fragment of HTML containing only the form, plus the text "Added to cart". HTMX will swap the 
+contents of the form with the HTML returned by the server, since the default value of `hx-swap` is `innerHTML` and the 
+default value of `hx-target` is `this`, so the defaults should suit us fine.
 
 **Test that it works**
 
 When you click the "Add to cart" button, you should see the text "Added to cart". However, the shopping cart in the
 top right corner is not updated yet. Proceed to exercise 2 to fix this.
-
-If you click the "Add to cart" button twice, you may notice a full page reload on the second click. This is because
-the "add-to-cart-success" page also needs the `hx-post` and `hx-swap` attributes added to the form.
 
 **Resources**
 
