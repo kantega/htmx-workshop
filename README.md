@@ -5,7 +5,7 @@ In this workshop, we'll introduce the basic concepts of HTMX by making progressi
 
 ## Run the application
 
-Spring MVC: In a terminal, go to the folder `java` and run `mvn spring-boot:run` or use the run-button in your editor.
+Spring MVC: In a terminal, go to the folder `java` and run `mvn spring-boot:run`.
 Then open a
 browser and go to http://localhost:8080
 
