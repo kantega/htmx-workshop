@@ -30,6 +30,8 @@ namespace htmx_test.Controllers
             return View("/Views/Webshop/Index.cshtml");
         }
 
+        [HttpGet]
+        [Route("webshop/cart")]
         public IActionResult Cart()
         {
             ViewBag.cartList = GetCart().GetItems();
@@ -38,6 +40,8 @@ namespace htmx_test.Controllers
             return PartialView("/Views/Webshop/Cart.cshtml");
         }
 
+        [HttpGet]
+        [Route("webshop/search")]
         public IActionResult Search(String q)
         {
             ViewBag.productList = _productRepository.GetAllProducts();
@@ -50,7 +54,7 @@ namespace htmx_test.Controllers
         }
 
         // Adds a product to the shopping cart, and returns html for the button with a confirmation text.
-
+        [HttpGet]
         [Route("webshop/add-to-cart")]
         public IActionResult AddToCart(int productId)
         {
@@ -67,9 +71,9 @@ namespace htmx_test.Controllers
 
         }
 
-     
+
         // Adds a product to the shopping cart, and returns a full page. This is the endpoint we are getting rid of.
-    
+        [HttpPost]
         [Route("webshop/add-to-cart-full-reload")]
         public void AddToCartFullReload(int productId)
         {
@@ -83,7 +87,7 @@ namespace htmx_test.Controllers
 
         }
 
-
+        [HttpPost]
         [Route("webshop/remove-from-cart")]
         public void RemoveFromCart(int productId)
         {
@@ -124,6 +128,7 @@ namespace htmx_test.Controllers
             // TODO: Add HX-Trigger http header to trigger cart reload and inventory update
         }
 
+        [HttpPost]
         [Route("webshop/clear-cart-full-reload")]
         public void EmptyCartFullReload()
         {  
@@ -132,7 +137,7 @@ namespace htmx_test.Controllers
             Response.Redirect("/webshop");
         }
 
-
+        [HttpGet]
         [Route("webshop/shipping-info")]
         public IActionResult ShippingInfo()
         {
