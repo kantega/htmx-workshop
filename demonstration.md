@@ -55,6 +55,12 @@ Vise antall på lager
 - Vise endepunktet /inventory
 - Legge til `<div hx-get="/inventory/productId=${product.id}" hx-trigger="load">` i products.jsp
 - Vise at stock vises når siden lastes
+
+
+- Vise at den dukker opp litt sent. Bør ha en loading-indikator
+- Legge til `<img src="/three-dots.svg" class="htmx-indicator" />` og `hx-indicator="next img"` på `<input`  
+
+
 - Legge til `HX-Trigger` header `product-updated-${product.id}` i add to cart
 - Legge til `hx-trigger="load, product-updated-${product.id} from:body` 
 - Vise at stock oppdaterer seg når man legger til i handlekurven
